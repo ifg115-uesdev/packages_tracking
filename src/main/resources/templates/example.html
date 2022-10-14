@@ -6,12 +6,13 @@
 
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
-
+        <title>Agencia</title>
+        <link rel="stylesheet" type="text/css" href="/src/main/resources/Static/index.css">
     </head>
+
     <body>
 
-        <nav class="navbar navbar-light" style="background-color: #dc3545;">
+        <nav class="navbar navbar-light" style="background-color: #A93226;">
             <a class="navbar-brand" href="#">Sistema de Tracking</a>
             <ul class="nav justify-content-end">
                 <li class="nav-item">
@@ -33,21 +34,22 @@
         <br><!-- comment -->
         <br><!-- comment -->
         <br><!-- comment -->
-        <br><!-- comment -->
-        <br><!-- comment -->
 
-        <div class="container h-100" style="background-color:#B5B2B2">
+
+        <div class="container h-100" style="background-color:#A6ACAF">
             <div class="row h-100 justify-content-center align-items-center">
                 <div class="col-10 col-md-8 col-lg-6">
                     <!-- Form -->
                     <form class="form-example" action="" method="post">
                         <h1>Datos de Agencia</h1>
-
+                        <br><!-- comment -->
                         <div class="form-group">
                             <label for="agencia">Nombre de Agencia:</label>
                             <input type="text" class="form-control agencia" id="agencia" placeholder="Agencia..." name="agencia">
                         </div>
+                        <br><!-- comment -->
                         <label for="agencia">Departamento:</label>
+                        <br><!-- comment -->
                         <select class="form-select" aria-label="Default select example">
                             <option selected>Seleccionar un departamento</option>
                             <option value="1">Ahuachapan</option>
@@ -66,13 +68,30 @@
                             <option value="2">La Libertad</option>
 
                         </select>
+                        <br><!-- comment -->
                         <div class="form-group">
                             <label for="direccion">Direccion:</label>
+                            <br><!-- comment -->
                             <input type="text" class="form-control direccion" id="direccion" placeholder="Direccion..." name="direccion">
 
                         </div>
                         <br>
-                     
+                         <label for="estado">Estado de la agencia:</label>
+                         <br>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                            <label class="form-check-label" for="flexRadioDefault1">
+                                Activa
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                Inactiva
+                            </label>
+                        </div>
+                         <br>
+
                         <button type="button" class="btn btn-danger">Crear</button>
                         <button type="button" class="btn btn-danger">Cancelar</button>
                         <!-- End input fields -->
