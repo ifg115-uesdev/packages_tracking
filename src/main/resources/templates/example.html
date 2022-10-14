@@ -12,20 +12,20 @@
 
     <body>
 
-        <nav class="navbar navbar-light" style="background-color: #A93226;">
-            <a class="navbar-brand" href="#">Sistema de Tracking</a>
+        <nav class="navbar navbar-light" style="background-color:#A93226;">
+            <a class="navbar-brand" style="color:white;" href="#">Sistema de Tracking</a>
             <ul class="nav justify-content-end">
                 <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Inicio</a>
+                    <a class="nav-link" style="color:white;" href="#">Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Perfil</a>
+                    <a class="nav-link" style="color:white;" href="#">Perfil</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Rastrear</a>
+                    <a class="nav-link" style="color:white;" href="#">Rastrear</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Salir</a>
+                    <a class="nav-link" style="color:white;" href="#">Salir</a>
                 </li>
 
             </ul>
@@ -36,19 +36,21 @@
         <br><!-- comment -->
 
 
-        <div class="container h-100" style="background-color:#A6ACAF">
+        <div class="container h-100" style="background-color:lightgrey; width: 600px;">
             <div class="row h-100 justify-content-center align-items-center">
                 <div class="col-10 col-md-8 col-lg-6">
                     <!-- Form -->
                     <form class="form-example" action="" method="post">
-                        <h1>Datos de Agencia</h1>
+                        <p style="font-size:25px;">Datos de Agencia</p>
                         <br><!-- comment -->
                         <div class="form-group">
                             <label for="agencia">Nombre de Agencia:</label>
+                            <label for="agencia" style="color:#A93226;">*</label>
                             <input type="text" class="form-control agencia" id="agencia" placeholder="Agencia..." name="agencia">
                         </div>
                         <br><!-- comment -->
                         <label for="agencia">Departamento:</label>
+                        <label for="agencia" style="color:#A93226;">*</label>
                         <br><!-- comment -->
                         <select class="form-select" aria-label="Default select example">
                             <option selected>Seleccionar un departamento</option>
@@ -71,6 +73,7 @@
                         <br><!-- comment -->
                         <div class="form-group">
                             <label for="direccion">Direccion:</label>
+                            <label for="agencia" style="color:#A93226;">*</label>
                             <br><!-- comment -->
                             <input type="text" class="form-control direccion" id="direccion" placeholder="Direccion..." name="direccion">
 
@@ -92,7 +95,7 @@
                         </div>
                          <br>
 
-                        <button type="button" class="btn btn-danger">Crear</button>
+                        <button type="button" style="background-color:#34495E;" class="btn btn-danger">Crear</button>
                         <button type="button" class="btn btn-danger">Cancelar</button>
                         <!-- End input fields -->
 
