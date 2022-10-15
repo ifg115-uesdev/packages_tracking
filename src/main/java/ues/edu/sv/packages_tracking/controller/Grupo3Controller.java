@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class Grupo3Controller {
      @GetMapping("/")
     public String inicio(Model model){
-        return "example";
+        return "Vista3";
     }
 }
