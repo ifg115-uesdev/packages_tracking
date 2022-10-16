@@ -21,25 +21,25 @@ body {
 }
 
 .container {
-    border: solid 1px  #000000;
+    border: solid 1px  #FBFCFC;
 }
 
 table {
-    color: gray;
-    font-size: 14px;
+    color: black;
+    font-size: 12px;
     table-layout: fixed;
     border-collapse: collapse;
 }
 
 thead {
-    background: rgba(243, 140, 210, 0.4);
+    background: #FBFCFC;
 }
 
 th {
     padding: 20px 15px ;
     font-weight: 700;
     text-transform: uppercase;
-    background-color: dimgray;
+    background-color: #FBFCFC;
     text-align: center;
 }
 
@@ -116,7 +116,7 @@ tbody tr:hover {
   
   .nav-menu-link:hover,
   .nav-menu-link_active {
-    background-color: #034574;
+    background-color: #A93226;
     transition: 0.5s;
   }
   
