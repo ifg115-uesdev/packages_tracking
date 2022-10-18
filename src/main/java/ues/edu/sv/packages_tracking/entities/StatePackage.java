@@ -41,7 +41,6 @@ public class StatePackage implements Serializable {
     private String name;
     @Column(name = "description", length = 250)
     private String description;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "statePackageId", fetch = FetchType.LAZY)
-    private List<Package> packageList;
-    
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "statePackageId", fetch = FetchType.EAGER)
+    private List<TrackingHist> trackingHistList;
 }

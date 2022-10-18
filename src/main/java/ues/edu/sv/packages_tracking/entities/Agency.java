@@ -46,18 +46,17 @@ public class Agency implements Serializable {
     @Basic(optional = false)
     @Column(name = "state", nullable = false)
     private boolean state;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "shippingAgencyId", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "shippingAgencyId", fetch = FetchType.EAGER)
     private List<Package> packageList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "destinationAgencyId", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "destinationAgencyId", fetch = FetchType.EAGER)
     private List<Package> packageList1;
     @JoinColumn(name = "department_id", referencedColumnName = "department_id", nullable = false)
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private Department departmentId;
     @JoinColumn(name = "agency_type_id", referencedColumnName = "agency_type_id", nullable = false)
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private AgencyType agencyTypeId;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "agencyId", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "agencyId", fetch = FetchType.EAGER)
     private List<User> userList;
-
     
 }

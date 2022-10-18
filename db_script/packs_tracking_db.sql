@@ -84,7 +84,6 @@ CREATE TABLE `user` (
 CREATE TABLE `package` (
   `package_id` varchar(50) NOT NULL,
   `description` varchar(250) NOT NULL,
-  `state_package_id` int NOT NULL,
   `user_id` int NOT NULL,
   `sender_customer_name` varchar(100) NOT NULL,
   `recipient_customer_name` varchar(100) NOT NULL,
@@ -93,17 +92,33 @@ CREATE TABLE `package` (
   `package_weight` double NOT NULL,
   `start_date` timestamp NOT NULL,
   `end_date` timestamp NULL DEFAULT NULL,
+  `price` float(10,2) NOT NULL,
   PRIMARY KEY (`package_id`),
   KEY `package_FK` (`shipping_agency_id`),
   KEY `package_FK_1` (`destination_agency_id`),
-  KEY `package_FK_2` (`state_package_id`),
   KEY `package_FK_3` (`user_id`),
   CONSTRAINT `package_FK` FOREIGN KEY (`shipping_agency_id`) REFERENCES `agency` (`agency_id`) ON DELETE RESTRICT,
   CONSTRAINT `package_FK_1` FOREIGN KEY (`destination_agency_id`) REFERENCES `agency` (`agency_id`) ON DELETE RESTRICT,
-  CONSTRAINT `package_FK_2` FOREIGN KEY (`state_package_id`) REFERENCES `state_package` (`state_package_id`) ON DELETE RESTRICT ON UPDATE CASCADE,
   CONSTRAINT `package_FK_3` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 
+-- packs_tracking_db.tracking_hist definition
+
+CREATE TABLE `tracking_hist` (
+  `hist_id` int NOT NULL AUTO_INCREMENT,
+  `package_id` varchar(50) NOT NULL,
+  `state_package_id` int NOT NULL,
+  `modify_date` timestamp NOT NULL,
+  `agency_id` int NOT NULL,
+  `observation` varchar(500) DEFAULT NULL,
+  PRIMARY KEY (`hist_id`),
+  KEY `tracking_hist_FK` (`agency_id`),
+  KEY `tracking_hist_FK_1` (`package_id`),
+  KEY `tracking_hist_FK_2` (`state_package_id`),
+  CONSTRAINT `tracking_hist_FK` FOREIGN KEY (`agency_id`) REFERENCES `agency` (`agency_id`) ON DELETE RESTRICT ON UPDATE CASCADE,
+  CONSTRAINT `tracking_hist_FK_1` FOREIGN KEY (`package_id`) REFERENCES `package` (`package_id`) ON DELETE RESTRICT ON UPDATE CASCADE,
+  CONSTRAINT `tracking_hist_FK_2` FOREIGN KEY (`state_package_id`) REFERENCES `state_package` (`state_package_id`) ON DELETE RESTRICT ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 
 -- packs_tracking_db.rol_user definition
 

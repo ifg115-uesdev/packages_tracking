@@ -67,15 +67,14 @@ public class User implements Serializable {
     @JoinTable(name = "rol_user", joinColumns = {
         @JoinColumn(name = "user_id", referencedColumnName = "user_id", nullable = false)}, inverseJoinColumns = {
         @JoinColumn(name = "rol_id", referencedColumnName = "rol_id", nullable = false)})
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.EAGER)
     private List<Rol> rolList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId", fetch = FetchType.EAGER)
     private List<Package> packageList;
     @JoinColumn(name = "department_id", referencedColumnName = "department_id", nullable = false)
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private Department departmentId;
     @JoinColumn(name = "agency_id", referencedColumnName = "agency_id", nullable = false)
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private Agency agencyId;
-    
 }

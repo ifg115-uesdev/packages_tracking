@@ -6,13 +6,16 @@ package ues.edu.sv.packages_tracking.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -54,17 +57,18 @@ public class Package implements Serializable {
     @Column(name = "end_date")
     @Temporal(TemporalType.TIMESTAMP)
     private Date endDate;
+    @Basic(optional = false)
+    @Column(name = "price", nullable = false)
+    private float price;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "packageId", fetch = FetchType.EAGER)
+    private List<TrackingHist> trackingHistList;
     @JoinColumn(name = "shipping_agency_id", referencedColumnName = "agency_id", nullable = false)
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private Agency shippingAgencyId;
     @JoinColumn(name = "destination_agency_id", referencedColumnName = "agency_id", nullable = false)
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private Agency destinationAgencyId;
-    @JoinColumn(name = "state_package_id", referencedColumnName = "state_package_id", nullable = false)
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private StatePackage statePackageId;
     @JoinColumn(name = "user_id", referencedColumnName = "user_id", nullable = false)
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private User userId;
-    
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    private User userId;    
 }

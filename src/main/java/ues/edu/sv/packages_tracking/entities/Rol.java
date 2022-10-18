@@ -40,7 +40,7 @@ public class Rol implements Serializable {
     private String name;
     @Column(name = "description", length = 250)
     private String description;
-    @ManyToMany(mappedBy = "rolList", fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "rolList", fetch = FetchType.EAGER)
     private List<User> userList;
-    
+
 }
