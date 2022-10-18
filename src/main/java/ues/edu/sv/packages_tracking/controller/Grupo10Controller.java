@@ -1,12 +1,16 @@
 package ues.edu.sv.packages_tracking.controller;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping(value = "/login")
 public class Grupo10Controller {
-   @RequestMapping(value = "/login")
+
+
+    @GetMapping
     public String loginView() {
-        return "login";
+        return "vista10";
     }
     
 }
