@@ -10,7 +10,7 @@ public class Grupo10Controller {
 
     @GetMapping
     public String loginView() {
-        return "vista10";
+        return "vista9";
     }
     
 }
