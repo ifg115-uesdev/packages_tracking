@@ -60,15 +60,15 @@ public class Package implements Serializable {
     @Basic(optional = false)
     @Column(name = "price", nullable = false)
     private float price;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "packageId", fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "packageId", fetch = FetchType.LAZY)
     private List<TrackingHist> trackingHistList;
     @JoinColumn(name = "shipping_agency_id", referencedColumnName = "agency_id", nullable = false)
-    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Agency shippingAgencyId;
     @JoinColumn(name = "destination_agency_id", referencedColumnName = "agency_id", nullable = false)
-    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Agency destinationAgencyId;
     @JoinColumn(name = "user_id", referencedColumnName = "user_id", nullable = false)
-    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private User userId;    
 }

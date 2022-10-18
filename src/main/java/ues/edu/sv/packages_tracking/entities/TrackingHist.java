@@ -45,13 +45,13 @@ public class TrackingHist implements Serializable {
     @Column(name = "observation", length = 500)
     private String observation;
     @JoinColumn(name = "agency_id", referencedColumnName = "agency_id", nullable = false)
-    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Agency agencyId;
     @JoinColumn(name = "package_id", referencedColumnName = "package_id", nullable = false)
-    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Package packageId;
     @JoinColumn(name = "state_package_id", referencedColumnName = "state_package_id", nullable = false)
-    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private StatePackage statePackageId;
     
 }

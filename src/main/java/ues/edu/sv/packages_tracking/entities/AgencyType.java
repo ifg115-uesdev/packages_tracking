@@ -41,6 +41,6 @@ public class AgencyType implements Serializable {
     private String type;
     @Column(name = "description", length = 250)
     private String description;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "agencyTypeId", fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "agencyTypeId", fetch = FetchType.LAZY)
     private List<Agency> agencyList;    
 }
