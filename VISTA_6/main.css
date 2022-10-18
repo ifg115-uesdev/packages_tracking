@@ -1,0 +1,84 @@
+* {
+  box-sizing: border-box;
+}
+.bgPrimario {
+  background-color: #a93226;
+}
+
+body {
+  height: 100vh;
+}
+
+svg {
+  height: auto;
+  width: 100%;
+}
+
+main {
+  margin-top: 5rem;
+}
+
+ul,
+li {
+  -webkit-padding-start: 0;
+  list-style: none;
+  margin: none;
+  padding: none;
+  border: none;
+}
+
+/* outputs grid */
+
+#Outputs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 2rem 2rem 2rem;
+  gap: 2rem 4rem;
+}
+
+.OutputElement {
+  display: grid;
+  grid-template-columns: 2rem 1fr 2fr;
+  grid-template-rows: 100%;
+}
+
+.OutputElement span {
+  padding: 0.2rem;
+  display: flex;
+  align-items: center;
+}
+.OutputElement span:nth-child(1) {
+  justify-content: center;
+}
+.OutputElement span:nth-child(2) {
+  border-radius: 3px 0px 0px 3px;
+  margin-right: 1px;
+}
+.OutputElement span:nth-child(3) {
+  border-radius: 0px 3px 3px 0px;
+  border: 1px solid #a93226;
+}
+
+/* movimientos grid */
+#historial {
+  margin-top: 4rem;
+}
+#historial h2 {
+  margin-bottom: 2rem;
+}
+
+#movsHeader {
+  border-top: 1px solid #a6acaf;
+}
+
+.movsGrid {
+  display: grid;
+  grid-template-columns: 25% 25% 25%;
+  gap: 1rem;
+  width: 100%;
+  justify-content: center;
+  padding: auto;
+  border-bottom: 1px solid #a6acaf;
+  align-items: center;
+  min-height: 3rem;
+}
