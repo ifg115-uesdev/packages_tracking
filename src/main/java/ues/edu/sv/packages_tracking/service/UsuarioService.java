@@ -16,7 +16,7 @@ public interface UsuarioService {
      * Persiste o actualiza un usuario en la base de datos
      * @param user
      */
-    public void guardarAgencia(User user);
+    public void guardarUsuario(User user);
 
     /**
      * Retorna un usuario deacuerdo a su ID
