@@ -102,6 +102,15 @@ CREATE TABLE `package` (
   CONSTRAINT `package_FK_3` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 
+-- packs_tracking_db.transportation definition
+
+CREATE TABLE `transportation` (
+  `transportation_id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) CHARACTER SET utf8mb4 NOT NULL,
+  `state` tinyint(1) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`transportation_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 -- packs_tracking_db.tracking_hist definition
 
 CREATE TABLE `tracking_hist` (
@@ -111,13 +120,17 @@ CREATE TABLE `tracking_hist` (
   `modify_date` timestamp NOT NULL,
   `agency_id` int NOT NULL,
   `observation` varchar(500) DEFAULT NULL,
+  `transportation_id` int NOT NULL,
+  `transportation_report` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`hist_id`),
   KEY `tracking_hist_FK` (`agency_id`),
   KEY `tracking_hist_FK_1` (`package_id`),
   KEY `tracking_hist_FK_2` (`state_package_id`),
+  KEY `tracking_hist_FK_3` (`transportation_id`),
   CONSTRAINT `tracking_hist_FK` FOREIGN KEY (`agency_id`) REFERENCES `agency` (`agency_id`) ON DELETE RESTRICT ON UPDATE CASCADE,
   CONSTRAINT `tracking_hist_FK_1` FOREIGN KEY (`package_id`) REFERENCES `package` (`package_id`) ON DELETE RESTRICT ON UPDATE CASCADE,
-  CONSTRAINT `tracking_hist_FK_2` FOREIGN KEY (`state_package_id`) REFERENCES `state_package` (`state_package_id`) ON DELETE RESTRICT ON UPDATE CASCADE
+  CONSTRAINT `tracking_hist_FK_2` FOREIGN KEY (`state_package_id`) REFERENCES `state_package` (`state_package_id`) ON DELETE RESTRICT ON UPDATE CASCADE,
+  CONSTRAINT `tracking_hist_FK_3` FOREIGN KEY (`transportation_id`) REFERENCES `transportation` (`transportation_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 
 -- packs_tracking_db.rol_user definition
