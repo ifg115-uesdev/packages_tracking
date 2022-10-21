@@ -1,0 +1,8 @@
+.h3{
+  color: #34495E
+}
+
+.table-hover tbody tr:hover {
+  background-color: #cadef1;
+  color: #34495E;
+}
