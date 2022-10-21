@@ -12,6 +12,6 @@ public class Grupo10Controller {
 
     @RequestMapping(value = "/consultar_transporte")
     public String consultTransportationView() {
-        return "Consultar_transporte";
+        return "consultar_transporte";
     }
 }
