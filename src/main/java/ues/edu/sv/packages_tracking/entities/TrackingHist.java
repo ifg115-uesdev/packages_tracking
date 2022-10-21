@@ -44,6 +44,8 @@ public class TrackingHist implements Serializable {
     private Date modifyDate;
     @Column(name = "observation", length = 500)
     private String observation;
+    @Column(name = "transportation_report", length = 100)
+    private String transportationReport;
     @JoinColumn(name = "agency_id", referencedColumnName = "agency_id", nullable = false)
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Agency agencyId;
@@ -53,5 +55,8 @@ public class TrackingHist implements Serializable {
     @JoinColumn(name = "state_package_id", referencedColumnName = "state_package_id", nullable = false)
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private StatePackage statePackageId;
+    @JoinColumn(name = "transportation_id", referencedColumnName = "transportation_id", nullable = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    private Transportation transportationId;
     
 }

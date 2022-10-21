@@ -10,8 +10,8 @@ public class Grupo10Controller {
         return "login";
     }
 
-    @RequestMapping(value = "/consultarTransporte")
+    @RequestMapping(value = "/consultar_transporte")
     public String consultTransportationView() {
-        return "ConsultarTransporte";
+        return "Consultar_transporte";
     }
 }
