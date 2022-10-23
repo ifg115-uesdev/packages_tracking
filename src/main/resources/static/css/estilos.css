@@ -1,0 +1,92 @@
+.cabecera{
+    background: rgb(167, 18, 18);
+    padding: 10px 0px;
+    display: block;
+    border-radius: 0.5em;
+}
+
+.cabecera .listas, ul{
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    font-family: Impact;
+}
+
+.listas ul li a{
+    text-decoration: none;
+    font-family: Impact;
+    color: white;
+    display: inline-block;
+    justify-content: space-between;
+    margin-right:1.5rem;
+}
+
+.Datos{
+    display: flex;
+    justify-content: space-around;
+}
+
+.Datos-texto{
+    padding-top: 10%;
+}
+
+.Datos-texto input{
+    width: 320%;
+    height: 175%;
+    border-radius: 7%;
+    background-color: rgb(207, 210, 232);
+}
+
+.Datos-boton{
+    padding-top: 10%;
+    padding-right: 20%;
+}
+
+.Datos-boton input{
+    width: 300%;
+    height: 200%;
+    padding-right: 275%;
+    border-radius: 7%;
+    background-color: rgb(35, 35, 100);
+    color: white;
+    font-family: Impact;
+}
+
+.iconos{
+    width: auto;
+    margin: 0 auto;
+    padding: 130px;
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 15%;
+}
+
+.iconos h2{
+    font-size: large;
+    font-family: Impact;
+    color: red;
+}
+
+.iconos li{
+    display: inline-block;
+    text-align: center;
+    width: 30%;
+    vertical-align: top;
+    margin: 0 1.5%;
+    padding: 30px 20px;
+    box-sizing: border-box;
+    border: 2px solid blue;/*mas simplificado; pero es de hacerlo con orden*/
+    border-radius: 10px;
+}
+
+.iconos li:hover{
+    border-color:red;
+}
+
+.iconos li:active{
+    border-color: #088c19;
+}
+
+.iconos li:hover h2{
+    font-size: 33px;
+}

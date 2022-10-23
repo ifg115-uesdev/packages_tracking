@@ -42,5 +42,5 @@ public class Rol implements Serializable {
     private String description;
     @ManyToMany(mappedBy = "rolList", fetch = FetchType.LAZY)
     private List<User> userList;
-    
+
 }
