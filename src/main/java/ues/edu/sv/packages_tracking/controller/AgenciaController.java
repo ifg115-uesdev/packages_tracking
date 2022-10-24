@@ -8,9 +8,9 @@ import ues.edu.sv.packages_tracking.service.AgenciaService;
 
 @Controller
 public class AgenciaController {
-    @RequestMapping(value = "/PruebaS")
+    @RequestMapping(value = "/Guardar")
     private String Save(){
-        return "crear_editar_agencias.html";
+        return "listado_agencias.html";
     }
 
     @Autowired
