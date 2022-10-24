@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"> 
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,7 +16,7 @@
         <div>
             <a class="letras" href="">  Inicio  </a>
             <a class="letras" href="">Perfil</a>
-            <a class="letras"href="">Rastrear</a>
+            <a class="letras" href="">Rastrear</a>
             <a class="letras" href="">Salir</a>
         </div>
         
@@ -35,7 +36,7 @@
         </div >
         <div id="boton">
             <a id="btn1" href="">Añadir usuario</a>
-            <a id="btn2"href="">Regresar</a>
+            <a id="btn2" href="">Regresar</a>
         </div>
 
         
@@ -43,17 +44,31 @@
 
 
     <div class="table">
-             <TABLE border>
-    <TR>
-       <TH class="lines">#</TH> <TH class="lines">Nombre</TH> <TH class="lines">Username</TH> <TH class="lines">Cargo</TH> <TH class="lines">Acciones</TH>
-    </TR>
-    <TR>
-        <TD>1</TD> <TD></TD> <TD></TD><TD></TD><TD><a id="btn3" href="">Editar</a><a id="btn4" href="">Eliminar</a></TD>
-    </TR>
-    <TR>
-        <TD>2</TD> <TD></TD> <TD></TD><TD></TD><TD><a id="btn3" href="">Editar</a><a id="btn4" href="">Eliminar</a></TD>
-    </TR>
-</TABLE>    
+        <table border >
+        <thead> 
+            <tr>
+                <th class="lines">#</th> 
+                <th class="lines">Nombre</th> 
+                <th class="lines">Userna.me</th> 
+                <th class="lines">Cargo</th> 
+                <th class="lines">Acciones</th>
+            </tr>
+        </thead> 
+    
+        <tbody>
+            <tr th:each=" usuario : ${usuarios}">
+            <th th:text=" ${usuario.nombre}"></th>
+            
+
+            <td>1</td> <td></td> <td></td><td></td>
+            <td><a id="btn3" href="">Editar</a><a id="btn4" href="">Eliminar</a>
+            </td>
+        </tr>/
+
+               
+        </tbody>
+    
+    </table>    
 
 
         </div>
