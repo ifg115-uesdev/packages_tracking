@@ -1,8 +1,31 @@
 .h3{
-  color: #34495E
+  background-color: #34495E
 }
-
+.d1{
+  color:#34495E
+}
 .table-hover tbody tr:hover {
-  background-color: #cadef1;
+  background-color: #c1c9d1;
   color: #34495E;
 }
+.selector-for-some-widget {
+  box-sizing: content-box;
+}
+.dropdown a{
+  size-adjust: MS-03;
+  background-color: #dfe0ff;}
+.input {
+  background-color: #34495E;
+}
+.p1 {
+  background-color:#A6ACAF;
+  
+}
+button{
+  margin: 13px 12px 12px 10px;
+}
+
+            ::placeholder{
+              color:white;
+            }
+          
