@@ -42,5 +42,4 @@ public class Department implements Serializable {
     private List<Agency> agencyList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "departmentId", fetch = FetchType.LAZY)
     private List<User> userList;
-    
 }

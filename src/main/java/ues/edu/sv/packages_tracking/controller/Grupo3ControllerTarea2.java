@@ -4,9 +4,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 @Controller
-public class Grupo3Controller {
-     @GetMapping("/Vista3")
+public class Grupo3ControllerTarea2 {
+     @GetMapping("/Grupo3T2")
     public String inicio(Model model){
-        return "Vista3";
+        return "Grupo3T2";
     }
 }

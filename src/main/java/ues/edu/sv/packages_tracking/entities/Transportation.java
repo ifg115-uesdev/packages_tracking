@@ -1,11 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package ues.edu.sv.packages_tracking.entities;
 
 import java.io.Serializable;
 import java.util.List;
+
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -27,20 +24,20 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "state_package", catalog = "packs_tracking_db", schema = "")
-public class StatePackage implements Serializable {
-
+@Table(name = "transportation", catalog = "packs_tracking_db", schema = "")
+public class Transportation implements Serializable{
+    
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "state_package_id", nullable = false)
-    private Integer statePackageId;
+    @Column(name = "transportation_id", nullable = false)
+    private Integer transportationId;
     @Basic(optional = false)
     @Column(name = "name", nullable = false, length = 50)
     private String name;
-    @Column(name = "description", length = 250)
-    private String description;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "statePackageId", fetch = FetchType.LAZY)
+    @Column(name = "state")
+    private boolean state;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "transportationId", fetch = FetchType.LAZY)
     private List<TrackingHist> trackingHistList;
 }

@@ -77,5 +77,4 @@ public class User implements Serializable {
     @JoinColumn(name = "agency_id", referencedColumnName = "agency_id", nullable = false)
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Agency agencyId;
-    
 }
