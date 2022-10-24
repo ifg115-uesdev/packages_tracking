@@ -23,9 +23,10 @@ public class UsuarioServiceImpl implements UsuarioService{
         return null;
     }
 
+    //guarda el usuario en la base de datos
     @Override
-    public void guardarAgencia(User user) {
-        
+    public void guardarUsuario(User user) {
+        usuarioRepository.save(user);
     }
 
     @Override
