@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -43,7 +43,7 @@
                 </div>
               </div>
             </div>
-            </nav>     
+          </nav>     
     </div>
     <div class="container">
         <table class="table">
@@ -57,11 +57,11 @@
               </tr>
             </thead>
             <tbody>
-              <tr th:each="agencia : ${agencias}">
-                <th scope="row">${agencia.agency_id}</th>
-                <td >${agencia.name}</td>
-                <td>${agencia.department_id}</td>
-                <td >${agencia.state}</td>
+              <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
                 <td>
                     <button type="button" class="btn btn-outline-warning">Editar</button>
                     <button type="button" class="btn btn-outline-danger">Eliminar</button>

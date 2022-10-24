@@ -1,0 +1,123 @@
+
+.letras{
+    color: white;
+    font-weight: bolder;
+    text-decoration: none;
+    padding-right: 40px;
+    text-decoration: underline;
+  }
+  #cabeza{
+      font-weight: bolder;
+      background-color: #a93226;
+      color: white;
+      height: 30px;
+      display: flex;
+      justify-content: space-between;
+  }
+  
+  #usuario{
+      font-size: 30px;
+      position: relative;
+      font-weight: bolder;
+      font-family: cursive;
+      
+  }
+  
+  .content{
+      padding: 10%;
+  }
+  
+  #botones{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+  
+      margin-top: 50px;
+  
+      
+  }
+  
+  table{
+      margin-top: 30px;    
+      height: 200px;
+      position: relative;
+      font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+      font-size: 15px;    margin: 45px;     width: 990px; text-align: left;    border-collapse: collapse
+  }
+  
+  
+  th {     font-size: 16px;      font-weight: bolder;     padding: 20px;     background: #fff;
+      border-top: 1px solid black;    border-bottom: 1px solid #e1e4e8; color: white; }
+  
+  td {    font-size: 12 ; padding: 8px;     background: #fff;     border-bottom: 1px solid #e1e4e8;
+      color: black;    border-top: 1px solid transparent; }
+  
+  tr:hover td { background: #DEDEDE; color: #DEDEDE; }
+  
+  #boton{
+      position: relative;
+      
+      text-align: center;
+  
+  }
+  
+  #btn1{
+      text-decoration: none;
+      
+      color: white;
+      border: 50px;
+      background-color: #34495E;
+      border-radius: 50px;
+      width: 55px;
+      margin: 22px;
+      font-size: 18px;
+      border-spacing: 25px 75px;
+      padding: 10px;
+      
+  }
+  #btn2{
+      text-decoration: none;
+      background-color: #959a9e;
+     color: white;
+      border: 50px;
+      border-radius: 50px;
+      width: 55px;
+      margin: 22px;
+      font-size: 18px;
+      border-spacing: 25px 75px;
+      padding: 10px;
+      
+  }
+  
+  #btn3{
+      
+    padding: .375rem .75rem;
+    border: 2px solid #ffc310;
+    border-radius: .25rem;
+    color: #ffc310;
+    transition: color .15s ease-in-out,
+      background-color .15s ease-in-out;
+  }
+  
+  #btn3:hover, .btn3:active, .btn3:focus {
+    color: #fff;
+    background-color: #ffc310;
+  
+  }
+  
+  #btn4{
+      
+    padding: .375rem .75rem;
+    border: 2px solid #ff0000;
+    border-radius: .25rem;
+    color: #ff0000;
+    transition: color .15s ease-in-out,
+      background-color .15s ease-in-out;
+  }
+  
+  #btn4:hover, .btn4:active, .btn4:focus {
+    color: #fff;
+    background-color: #ff0000;
+  
+  }
+  
