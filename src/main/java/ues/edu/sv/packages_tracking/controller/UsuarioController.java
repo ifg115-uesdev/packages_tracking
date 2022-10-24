@@ -8,15 +8,15 @@ import ues.edu.sv.packages_tracking.service.UsuarioService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
+ /* CONTROLADOR PARA BUSCAR LA VISTA LISTADO USUARIOS */
 @Controller
-@RequestMapping(value = "/usuario")
+@RequestMapping(value = "/usuarios")
 public class UsuarioController  {
     
     @Autowired
      private UsuarioService servicio;
 
-     @GetMapping(value="/allUsers")
+     @GetMapping(value="/listaUsers")
      public String editarUsuario() {
          return "listado_usuarios.html";
      }
