@@ -25,8 +25,8 @@ public class AgenciaServiceImpl implements AgenciaService{
 
     @Override
     public void guardarAgencia(Agency agency) {
-        //agenciaRepository.saveAllAndFlush(null);
-        agenciaRepository.saveAll(null);
+        
+        //agenciaRepository.saveAll(null);
         // TODO Auto-generated method stub
         
     }
