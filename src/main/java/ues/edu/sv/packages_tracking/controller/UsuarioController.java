@@ -1,5 +1,7 @@
 package ues.edu.sv.packages_tracking.controller;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -7,6 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import ues.edu.sv.packages_tracking.entities.Agency;
+import ues.edu.sv.packages_tracking.entities.Department;
 import ues.edu.sv.packages_tracking.entities.User;
 import ues.edu.sv.packages_tracking.service.UsuarioService;
 
@@ -28,7 +32,26 @@ public class UsuarioController {
     //en la vista, por eso el metodo para guardar esta comentado
     @PostMapping("/editar")
     public String saveUser(@ModelAttribute User user, Model model) {
-      //usuarioService.guardarUsuario(user);
+
+      //campo agencyId
+      Agency agencia = new Agency();
+      agencia.setAgencyId(3);
+      user.setAgencyId(agencia);
+
+      //campo departmentId
+      Department depto = new Department();
+      depto.setDepartmentId(1);
+      user.setDepartmentId(depto);
+
+      //campo dateBirth
+      Date fecha = new Date();
+      user.setDateBirth(fecha);
+      //campo gender
+      user.setGender('M');
+      //campo username
+      user.setUsername("prueba");
+
+      usuarioService.guardarUsuario(user);
       System.out.println("usuario guardado");
       return "listado_usuarios";
     } 
