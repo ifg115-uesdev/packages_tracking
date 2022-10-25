@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" xmlns:th="https://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link rel="stylesheet" th:href="@{/css/estilos_vista1.css}">
 	<title>Vista 1</title> 
     <nav>
@@ -17,28 +17,28 @@
 </head>
 <body>
     <div class="signupFrm">
-        <form action="" class="form">
+        <form action="" class="form" th:action="@{/editar}" th:object="${user}" method="post">
           <h2 class="title">DATOS DE USUARIO</h2>
     
           <div class="inputContainer">
-            <input type="text" class="input" placeholder="a">
+            <input type="text" class="input" placeholder="a" th:field="*{name}">
             <label for="" class="label">Nombre</label>
           </div>
 
           <div class="inputContainer">
-            <input type="email" class="input" placeholder="a">
+            <input type="email" class="input" placeholder="a" th:field="*{email}">
             <label for="" class="label">Email</label>
           </div>
 
     
           <div class="inputContainer">
-            <input type="password" class="input" placeholder="a">
+            <input type="password" class="input" placeholder="a" th:field="*{password}">
             <label for="" class="label">Contraseña</label>
           </div>
     
           <div class="inputContainer">
             <label for="depto">Departamento:         </label>
-            <select name="depto" id="depto"> 
+            <select name="depto" id="depto">
             <option value="Seleccione el depto" size="90">Seleccione el Departamento</option><br>
             <option value="Ahuachapan">Ahuachapan</option>
             <option value="Santa Ana">Santa Ana</option>
@@ -74,6 +74,7 @@
     
           <!--editando el boton para guardar los cambios-->
           <input type="submit" class="submitBtn" value="Guardar">
+          
         </form>
       </div>
 </body>

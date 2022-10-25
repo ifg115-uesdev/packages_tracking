@@ -6,9 +6,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import ues.edu.sv.packages_tracking.entities.User;
 import ues.edu.sv.packages_tracking.service.UsuarioService;
@@ -22,15 +19,16 @@ public class UsuarioController {
     //lo hice aqui para ver esta vista y hacer mis pruebas
     @GetMapping("/editar")
     public String openView(Model model){
+        model.addAttribute("user", new User());
         System.out.println("abriendo vista...");
         return "crear_editar_usuarios";
     }
     
-    //no funciona este PostMapping deberia de abrir la vista listado de usuarios
-    //ademas de guardar el usuario
+    //no me daje guardar el usuario en la base de datos porque me pide agencyId y falta esa opcion
+    //en la vista, por eso el metodo para guardar esta comentado
     @PostMapping("/editar")
     public String saveUser(@ModelAttribute User user, Model model) {
-      usuarioService.guardarUsuario(user);
+      //usuarioService.guardarUsuario(user);
       System.out.println("usuario guardado");
       return "listado_usuarios";
     } 
