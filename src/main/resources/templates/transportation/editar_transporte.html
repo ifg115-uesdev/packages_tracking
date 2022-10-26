@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <title>Datos transporte</title>
+</head>
+<body>
+    <div layout:fragment="content">
+        <div class="row justify-content-center">
+          <form class="col-6 card p-4" style="background-color: #D9D9D9;" th:action="@{/transportation/update/{id}(id=${uTransportation.transportationId})}" th:object="${uTransportation}" method="post">
+            <h4>Datos de transporte</h4>
+            <hr>
+              <div class="form-group">
+                <label for="exampleFormControlInput1" class="form-label">Nombre del transporte</label>
+                <input th:field="*{name}" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Nombre transporte" required>
+              </div>
+              <br>
+              <div class="form-group">
+                <label for="checkContainer" class="form-label">Estado del transporte</label>
+                <div class="form-check" id="checkContainer">
+                  <input th:field="*{state}" class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                  <label class="form-check-label" for="flexCheckChecked">
+                    Activo
+                  </label>
+                </div>
+              </div>
+              <div class="form-group d-flex justify-content-end" style="margin-top: 1.5rem;">
+                <button type="submit" class="btn text-white" style="background-color: #34495E; margin-right: 1rem;">Guardar</button>
+                <a th:href="@{/transportation/all}" class="btn text-white" style="background-color: #A93226;">Cancelar</a>
+              </div>
+          </form>
+        </div>
+    </div>
+</body>
+</html>
