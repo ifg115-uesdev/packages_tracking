@@ -27,7 +27,7 @@ public class TransportationController {
     public String transportationList(Model model) {
         List<Transportation> list = service.getAllTransportation();
         model.addAttribute("list", list);
-        return "/transportation/listado_transportes";
+        return "transportation/listado_transportes";
     }
 
     @GetMapping(value="/register")

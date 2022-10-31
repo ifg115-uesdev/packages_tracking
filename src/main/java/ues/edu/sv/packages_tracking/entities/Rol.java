@@ -5,7 +5,10 @@
 package ues.edu.sv.packages_tracking.entities;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -40,7 +43,7 @@ public class Rol implements Serializable {
     private String name;
     @Column(name = "description", length = 250)
     private String description;
-    @ManyToMany(mappedBy = "rolList", fetch = FetchType.LAZY)
-    private List<User> userList;
+    // @ManyToMany(mappedBy = "rolList", fetch = FetchType.LAZY)
+    // private Set<Users> userList = new HashSet<>();
 
 }

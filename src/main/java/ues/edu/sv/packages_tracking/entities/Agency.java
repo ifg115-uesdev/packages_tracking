@@ -57,6 +57,6 @@ public class Agency implements Serializable {
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private AgencyType agencyTypeId;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "agencyId", fetch = FetchType.LAZY)
-    private List<User> userList;
+    private List<Users> userList;
     
 }

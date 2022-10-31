@@ -70,5 +70,5 @@ public class Package implements Serializable {
     private Agency destinationAgencyId;
     @JoinColumn(name = "user_id", referencedColumnName = "user_id", nullable = false)
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private User userId;    
+    private Users userId;    
 }

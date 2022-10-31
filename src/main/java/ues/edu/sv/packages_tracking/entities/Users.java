@@ -6,7 +6,10 @@ package ues.edu.sv.packages_tracking.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -24,6 +27,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -35,7 +40,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 @Table(name = "user", catalog = "packs_tracking_db", schema = "")
-public class User implements Serializable {
+public class Users implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -52,7 +57,7 @@ public class User implements Serializable {
     @Column(name = "username", nullable = false, length = 25)
     private String username;
     @Basic(optional = false)
-    @Column(name = "password", nullable = false, length = 10)
+    @Column(name = "password", nullable = false, length = 500)
     private String password;
     @Basic(optional = false)
     @Column(name = "email", nullable = false, length = 50)
@@ -63,12 +68,13 @@ public class User implements Serializable {
     @Basic(optional = false)
     @Column(name = "date_birth", nullable = false)
     @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dateBirth;
     @JoinTable(name = "rol_user", joinColumns = {
         @JoinColumn(name = "user_id", referencedColumnName = "user_id", nullable = false)}, inverseJoinColumns = {
         @JoinColumn(name = "rol_id", referencedColumnName = "rol_id", nullable = false)})
-    @ManyToMany(fetch = FetchType.LAZY)
-    private List<Rol> rolList;
+    @ManyToMany(fetch = FetchType.EAGER)
+    private Set<Rol> roles = new HashSet<>();
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId", fetch = FetchType.LAZY)
     private List<Package> packageList;
     @JoinColumn(name = "department_id", referencedColumnName = "department_id", nullable = false)
