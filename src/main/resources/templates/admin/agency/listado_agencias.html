@@ -31,7 +31,7 @@
             <tbody>
               <tr th:each="i : ${agencias}">
                 <td th:text="${i.name}"></td>
-                <td th:text="${i.departmentId.name}"></td>
+                <td th:text="${i.departmentId.rate}"></td>
                 <td th:text="${i.state} ? 'Activa' : 'Inactiva'"></td>
                 <td>
                     <a th:href="@{/agencia/update/{id}(id=${i.agencyId})}" class="btn btn-outline-warning">Editar</a>

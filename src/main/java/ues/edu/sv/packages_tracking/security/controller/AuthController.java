@@ -23,6 +23,8 @@ import ues.edu.sv.packages_tracking.service.RolService;
 import ues.edu.sv.packages_tracking.service.UsuarioService;
 
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @Controller
 @RequestMapping(value="/")
@@ -106,7 +108,6 @@ public class AuthController {
 
             return "redirect:/home";
         }
-    
     
     
 

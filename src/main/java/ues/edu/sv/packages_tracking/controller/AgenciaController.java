@@ -42,7 +42,7 @@ public class AgenciaController {
     public String allAgenciesView(Model model) {
         List<Agency> agencias = agenciaService.findAll();
         model.addAttribute("agencias", agencias);
-        return "agency/listado_agencias";
+        return "admin/agency/listado_agencias";
     }
     
 
@@ -55,7 +55,7 @@ public class AgenciaController {
         map.put("types", types);
         map.put("departments",departments);
         model.addAllAttributes(map);
-        return "agency/crear_agencia";
+        return "admin/agency/crear_agencia";
     }
 
     @GetMapping(value="/update/{id}")
@@ -68,7 +68,7 @@ public class AgenciaController {
         map.put("types", types);
         map.put("departments",departments);
         model.addAllAttributes(map);
-        return "agency/editar_agencia";
+        return "admin/agency/editar_agencia";
     }
 
     @PostMapping(value="/create")

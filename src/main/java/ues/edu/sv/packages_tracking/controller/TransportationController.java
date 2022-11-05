@@ -27,21 +27,21 @@ public class TransportationController {
     public String transportationList(Model model) {
         List<Transportation> list = service.getAllTransportation();
         model.addAttribute("list", list);
-        return "transportation/listado_transportes";
+        return "admin/transportation/listado_transportes";
     }
 
     @GetMapping(value="/register")
     public String createTransportationView(Model model) {
         Transportation transportation = new Transportation();
         model.addAttribute("transportation", transportation);
-        return "transportation/crear_transporte";
+        return "admin/transportation/crear_transporte";
     }
 
     @GetMapping(value="/update/{id}")
     public String updateTransportationView(@PathVariable("id")Integer id,Model model) {
         Transportation transportation = service.getOneById(id).get();
         model.addAttribute("uTransportation", transportation);
-        return "transportation/editar_transporte";
+        return "admin/transportation/editar_transporte";
     }
 
     @PostMapping(value="/create")
@@ -50,9 +50,9 @@ public class TransportationController {
             System.out.println(transportation.getName());
             System.out.println(transportation.isState());
             service.saveTransportation(transportation);
-            return "redirect:/transportation/all";
+            return "redirect:/admin/transportation/all";
         }
-        return "redirect:/transportation/register";
+        return "redirect:/admin/transportation/register";
     }
     
     @PostMapping(value="/update/{id}")
@@ -60,9 +60,9 @@ public class TransportationController {
         if (transportation!=null) {
             transportation.setTransportationId(id);
             service.saveTransportation(transportation);
-            return "redirect:/transportation/all";
+            return "redirect:/admin/transportation/all";
         }
-        return "redirect:/transportation/update/"+id;
+        return "redirect:/admin/transportation/update/"+id;
     }
     
 }
