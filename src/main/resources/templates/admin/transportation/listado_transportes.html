@@ -9,7 +9,14 @@
     <div layout:fragment="content">
         <h3>Listado de transporte</h3>
         <hr>
-        <a th:href="@{/transportation/register}" class="btn" style="background-color: #d9d9d9;">Agregar Transporte</a>
+        <div class="row">
+          <div class="col-6">
+            <a th:href="@{/}" class="btn text-white" style="background-color: #A93226;">Regresar</a>
+          </div>
+          <div class="col-6 d-flex flex-row-reverse">
+            <a th:href="@{/transportation/register}" class="btn text-white" style="background-color: #34495E;">Agregar Transporte</a>
+          </div>
+        </div>
         <br>
         <br>
         <table class="table">

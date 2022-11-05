@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <title>Tabla de agencias</title>
+</head>
+<body>
+    <div layout:fragment="content">
+        <h3>Listado de transporte</h3>
+        <hr>
+        <div class="row">
+          <div class="col-6">
+            <a th:href="@{/}" class="btn text-white" style="background-color: #A93226;">Regresar</a>
+          </div>
+          <div class="col-6 d-flex flex-row-reverse">
+            <a th:href="@{/agencia/create}" class="btn text-white" style="background-color: #34495E;">Agregar Agencia</a>
+          </div>
+        </div>
+        <br>
+        <br>
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Departamento</th>
+                <th scope="col">Estado</th>
+                <th scope="col">Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr th:each="i : ${agencias}">
+                <td th:text="${i.name}"></td>
+                <td th:text="${i.departmentId.name}"></td>
+                <td th:text="${i.state} ? 'Activa' : 'Inactiva'"></td>
+                <td>
+                    <a th:href="@{/agencia/update/{id}(id=${i.agencyId})}" class="btn btn-outline-warning">Editar</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+</body>
+</html>

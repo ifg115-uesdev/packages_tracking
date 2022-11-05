@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layout}">
+
+<head>
+    <title>Panel de navegación</title>
+</head>
+
+<body>
+    <div layout:fragment="content">
+        
+        <div class="list-group">
+            <a sec:authorize="hasAuthority('ADMIN')" th:href="@{/transportation/all}" class="list-group-item list-group-item-action">Transportes</a>
+            <a sec:authorize="hasAuthority('ADMIN')" th:href="@{/users}" class="list-group-item list-group-item-action">Usuarios</a>
+            <a sec:authorize="hasAuthority('ADMIN')" th:href="@{/agencia/list}" class="list-group-item list-group-item-action">Agencias</a>
+            <a sec:authorize="hasAuthority('ASSISTANT')" class="list-group-item list-group-item-action">Envío de paquetes</a>
+          </div>
+    </div>
+</body>
+
+</html>

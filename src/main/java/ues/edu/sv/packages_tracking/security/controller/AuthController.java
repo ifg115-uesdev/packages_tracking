@@ -12,32 +12,29 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import ues.edu.sv.packages_tracking.entities.Rol;
 import ues.edu.sv.packages_tracking.entities.Users;
-import ues.edu.sv.packages_tracking.repository.AgenciaRepository;
-import ues.edu.sv.packages_tracking.repository.DepartamentoRepository;
-import ues.edu.sv.packages_tracking.repository.RolRepository;
 import ues.edu.sv.packages_tracking.security.dto.Login;
+import ues.edu.sv.packages_tracking.service.AgenciaService;
+import ues.edu.sv.packages_tracking.service.DepartmentService;
+import ues.edu.sv.packages_tracking.service.RolService;
 import ues.edu.sv.packages_tracking.service.UsuarioService;
 
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-
-
-
 
 @Controller
 @RequestMapping(value="/")
 public class AuthController {
     @Autowired
-    AgenciaRepository agenciaRepository;
+    AgenciaService agenciaService;
 
     @Autowired
-    DepartamentoRepository departamentoRepository;
+    DepartmentService departmentService;
 
     @Autowired
-    RolRepository rolRepository;
+    RolService rolService;
 
     @Autowired
     UsuarioService uService;
@@ -51,21 +48,21 @@ public class AuthController {
         return "login";
     }
 
-    @PostMapping(value="auth/login")
+    @GetMapping(value="")
     public String getIndex() {
-        return "redirect:/";
+        return "index";
     }
     
 
-    @GetMapping(value="auth/create")
+    @GetMapping(value="users/create")
     public String getCreateUserView(Model model, Users user) {
-        Map<String,Object> objetos = new HashMap<String,Object>();
-        objetos.put("user", user);
-        objetos.put("agencias", agenciaRepository.findAll());
-        objetos.put("departamentos", departamentoRepository.findAll());
-        objetos.put("roles", rolRepository.findAll());
-        model.addAllAttributes(objetos);
-        return "users/create_user";
+        Map<String,Object> map = new HashMap<String,Object>();
+        map.put("user", user);
+        map.put("agencias", agenciaService.findAll());
+        map.put("departamentos", departmentService.findAll());
+        map.put("roles", rolService.getAllRoles());
+        model.addAllAttributes(map);
+        return "admin/users/create_user";
     }
 
     @GetMapping(value="home")
@@ -73,17 +70,8 @@ public class AuthController {
         return "home";
     }
 
-    @PostMapping(value="auth/register")
+    @PostMapping(value="users/register")
     public String createUser(@ModelAttribute("user") Users user) {
-        System.out.println(user.getName());
-        System.out.println(user.getLastname());
-        System.out.println(user.getEmail());
-        System.out.println(user.getUsername());
-        System.out.println(user.getPassword());
-        System.out.println(user.getGender());
-        System.out.println(user.getDepartmentId().getName());
-        System.out.println(user.getAgencyId().getName());
-        System.out.println(user.getDateBirth());
         
         List<Rol> roles = user.getRoles().stream().collect(Collectors.toList()); 
         System.out.println(roles.get(0).getName());
@@ -93,6 +81,31 @@ public class AuthController {
 
         return "redirect:/home";
     }
+
+    @GetMapping(value="users/update/{id}")
+    public String getUpdateUserView(Model model, Users user) {
+        Map<String,Object> map = new HashMap<String,Object>();
+        map.put("uUser", user);
+        map.put("agencias", agenciaService.findAll());
+        map.put("departamentos", departmentService.findAll());
+        map.put("roles", rolService.getAllRoles());
+        model.addAllAttributes(map);
+        return "users/create_user";
+    }
+
+
+    @PostMapping(value="users/update/{id}")
+        public String updateUser(@ModelAttribute("uUser") Users user, @PathVariable("id")Integer id) {
+            
+            List<Rol> roles = user.getRoles().stream().collect(Collectors.toList()); 
+            System.out.println(roles.get(0).getName());
+            user.setUserId(id);
+            String password = user.getPassword();
+            user.setPassword(passwordEncoder.encode(password));
+            uService.guardarUsuario(user);
+
+            return "redirect:/home";
+        }
     
     
     

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <title>Tabla de usuarios</title>
+</head>
+<body>
+    <div layout:fragment="content">
+        <h3>Listado de usuarios</h3>
+        <hr>
+        <div class="row">
+          <div class="col-6">
+            <a th:href="@{/}" class="btn text-white" style="background-color: #A93226;">Regresar</a>
+          </div>
+          <div class="col-6 d-flex flex-row-reverse">
+            <a th:href="@{/users/create}" class="btn text-white" style="background-color: #34495E;">Agregar usuario</a>
+          </div>
+        </div>
+        <br>
+        <br>
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Username</th>
+                <th scope="col">Agencia</th>
+                <th scope="col">Rol</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr th:each="t : ${list}">
+                <td th:text="${t.name} +' '+ (${t.lastname} ?${t.lastname}:'')"></td>
+                <td th:text="${t.username}"></td>
+                <td th:text="${t.agencyId.name}"></td>
+                <td th:text="${t.roles.size > 0 ?t.roles[0].name:'USER'}"></td>
+                <td>
+                    <!-- <a th:href="@{/transportation/update/{id}(id=${t.transportationId})}" class="btn btn-warning">Editar</a> -->
+                    <a href="" class="btn btn-warning">Editar</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <br>
+          <div sec:authorize="isAuthenticated()">
+            This content is only shown to authenticated users.
+          </div>
+          <div sec:authorize="hasAuthority('ADMIN')">
+            This content is only shown to administrators.
+          </div>
+          <div sec:authorize="hasAuthority('ASSISTANT')">
+            This content is only shown to ASSISTANT.
+          </div>
+          <span sec:authentication="principal.authorities"></span>
+    </div>
+</body>
+</html>

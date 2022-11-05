@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <title>Datos de Agencia</title>
+</head>
+<body>
+    <div layout:fragment="content">
+                <div class="row justify-content-center">
+                    <form class="col-6 card p-4" style="background-color: #D9D9D9;"th:action="@{/agencia/update/{id}(id=${uAgency.agencyId})}" th:object="${uAgency}" method="post">
+                        <p style="font-size:25px;">Datos de Agencia</p>
+                        <div class="form-group">
+                            <label class="form-label" for="agencia">Nombre de Agencia:</label>
+                            <input type="text" class="form-control agencia" id="agencia" placeholder="Agencia..." th:field="*{name}">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="direccion">Direccion:</label>
+                            <input type="text" class="form-control" id="direccion" placeholder="Direccion..." th:field="*{address}">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="selectDepartamento">Departamento</label>
+                            <select class="form-select" id="selectDepartamento" aria-label="Default select example" th:field="*{departmentId}">
+                                <option th:each="i : ${departments}" th:value="${i.departmentId}" th:text="${i.name}">
+                                </option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="selectType">Tipo de agencia</label>
+                            <select class="form-select" id="selectType" aria-label="Default select example" th:field="*{agencyTypeId}">
+                                <option th:each="i : ${types}" th:value="${i.agencyTypeId}" th:text="${i.type}">
+                                </option>
+                            </select>
+                        </div>
+                         <div class="form-group">
+                            <label class="form-label" for="checkContainer">Estado de la agencia</label>
+                            <div class="form-check" id="checkContainer">
+                              <input th:field="*{state}" class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                              <label class="form-check-label" for="flexCheckChecked">
+                                Activa
+                              </label>
+                            </div>
+                          </div>
+                        <div class="form-group d-flex justify-content-end" style="margin-top: 1.5rem;">
+                            <button type="submit" class="btn text-white" style="background-color: #34495E; margin-right: 1rem;">Guardar</button>
+                            <a class="btn text-white" th:href="@{/agencia/list}" style="background-color: #A93226;">Cancelar</a>
+                        </div>
+                        <!-- End input fields -->
+
+                    </form>
+                    <!-- Form end -->
+                </div>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+    </body>
+</html>

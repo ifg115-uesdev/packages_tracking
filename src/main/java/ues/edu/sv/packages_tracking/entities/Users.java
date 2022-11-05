@@ -6,9 +6,7 @@ package ues.edu.sv.packages_tracking.entities;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -74,7 +72,7 @@ public class Users implements Serializable {
         @JoinColumn(name = "user_id", referencedColumnName = "user_id", nullable = false)}, inverseJoinColumns = {
         @JoinColumn(name = "rol_id", referencedColumnName = "rol_id", nullable = false)})
     @ManyToMany(fetch = FetchType.EAGER)
-    private Set<Rol> roles = new HashSet<>();
+    private List<Rol> roles;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId", fetch = FetchType.LAZY)
     private List<Package> packageList;
     @JoinColumn(name = "department_id", referencedColumnName = "department_id", nullable = false)
