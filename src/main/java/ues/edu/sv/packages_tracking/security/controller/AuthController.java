@@ -72,42 +72,30 @@ public class AuthController {
         return "home";
     }
 
-    @PostMapping(value="users/register")
-    public String createUser(@ModelAttribute("user") Users user) {
-        
-        List<Rol> roles = user.getRoles().stream().collect(Collectors.toList()); 
-        System.out.println(roles.get(0).getName());
-        String password = user.getPassword();
-        user.setPassword(passwordEncoder.encode(password));
-        uService.guardarUsuario(user);
-
-        return "redirect:/home";
-    }
-
-    @GetMapping(value="users/update/{id}")
-    public String getUpdateUserView(Model model, Users user) {
-        Map<String,Object> map = new HashMap<String,Object>();
-        map.put("uUser", user);
-        map.put("agencias", agenciaService.findAll());
-        map.put("departamentos", departmentService.findAll());
-        map.put("roles", rolService.getAllRoles());
-        model.addAllAttributes(map);
-        return "users/create_user";
-    }
+    // @GetMapping(value="users/update/{id}")
+    // public String getUpdateUserView(Model model, Users user) {
+    //     Map<String,Object> map = new HashMap<String,Object>();
+    //     map.put("uUser", user);
+    //     map.put("agencias", agenciaService.findAll());
+    //     map.put("departamentos", departmentService.findAll());
+    //     map.put("roles", rolService.getAllRoles());
+    //     model.addAllAttributes(map);
+    //     return "users/create_user";
+    // }
 
 
-    @PostMapping(value="users/update/{id}")
-        public String updateUser(@ModelAttribute("uUser") Users user, @PathVariable("id")Integer id) {
+    // @PostMapping(value="users/update/{id}")
+    //     public String updateUser(@ModelAttribute("uUser") Users user, @PathVariable("id")Integer id) {
             
-            List<Rol> roles = user.getRoles().stream().collect(Collectors.toList()); 
-            System.out.println(roles.get(0).getName());
-            user.setUserId(id);
-            String password = user.getPassword();
-            user.setPassword(passwordEncoder.encode(password));
-            uService.guardarUsuario(user);
+    //         List<Rol> roles = user.getRoles().stream().collect(Collectors.toList()); 
+    //         System.out.println(roles.get(0).getName());
+    //         user.setUserId(id);
+    //         String password = user.getPassword();
+    //         user.setPassword(passwordEncoder.encode(password));
+    //         uService.guardarUsuario(user);
 
-            return "redirect:/home";
-        }
+    //         return "redirect:/home";
+    //     }
     
     
 
