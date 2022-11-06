@@ -13,7 +13,9 @@
             <a sec:authorize="hasAuthority('ADMIN')" th:href="@{/transportation/all}" class="list-group-item list-group-item-action">Transportes</a>
             <a sec:authorize="hasAuthority('ADMIN')" th:href="@{/users}" class="list-group-item list-group-item-action">Usuarios</a>
             <a sec:authorize="hasAuthority('ADMIN')" th:href="@{/agencia/list}" class="list-group-item list-group-item-action">Agencias</a>
-            <a sec:authorize="hasAuthority('ASSISTANT')" class="list-group-item list-group-item-action">Envío de paquetes</a>
+            <a sec:authorize="hasAuthority('SERVICE')" th:href="@{/package/create}" class="list-group-item list-group-item-action">Envío de paquetes</a>
+            <a sec:authorize="hasAuthority('SERVICE')" th:href="@{/}" class="list-group-item list-group-item-action">Costear envío</a>
+            <a sec:authorize="hasAuthority('ASSISTANT')" th:href="@{/}" class="list-group-item list-group-item-action">Cambiar estado de paquete</a>
           </div>
     </div>
 </body>

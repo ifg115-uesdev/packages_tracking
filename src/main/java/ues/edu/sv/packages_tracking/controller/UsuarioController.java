@@ -63,11 +63,6 @@ public class UsuarioController {
         return "admin/users/create_user";
     }
 
-    @GetMapping(value="home")
-    public String getHomeView(Model model) {
-        return "home";
-    }
-
     @PostMapping(value="/register")
     public String createUser(@ModelAttribute("user") Users user) {
         
@@ -100,11 +95,13 @@ public class UsuarioController {
     @PostMapping(value="/update/{id}")
         public String updateUser(@ModelAttribute("uUser") Users user, @PathVariable("id")Integer id) {
             System.out.println("ENTRANDO AL POST");
+            //Users update = uService.obtenerPorId(id);
             List<Rol> roles = user.getRoles().stream().collect(Collectors.toList()); 
-            System.out.println(roles);
+            for (Rol rol : roles) {
+                System.out.println(rol.getName());
+            }
+            System.out.println(user.getPassword());
             user.setUserId(id);
-            //user.setPassword(passwordEncoder.encode(password));
-            System.out.println(user.toString());
             
 
             return "redirect:/users";

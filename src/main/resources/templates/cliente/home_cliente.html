@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <title>Tracker home</title>
+</head>
+<body>
+    <div layout:fragment="content">
+        <div class="row d-flex justify-content-center">
+            
+            <div class="col-6 card p-4" style="background-color: #D9D9D9;">
+                <h3 class="card-title">Monitorea tu envío</h3>
+                <form th:action="@{/tracking/detail}" method="get" class="card-body">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" name="packageId" placeholder="Ingrese el Id de su paquete" aria-label="Ingrese el Id de su paquete" aria-describedby="button-addon2">
+                        <button class="btn text-white" type="submit" style="background-color: #34495E;" id="button-addon2">Rastrear</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

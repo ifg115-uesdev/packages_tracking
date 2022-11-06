@@ -11,4 +11,6 @@ public interface PackageService {
     public List<Package> findByTransportationId(Integer transportationId);
 
     public void savePackage(Package paquete);
+
+    public boolean existe(String packageId);
 }

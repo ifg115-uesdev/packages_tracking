@@ -50,9 +50,9 @@ public class TransportationController {
             System.out.println(transportation.getName());
             System.out.println(transportation.isState());
             service.saveTransportation(transportation);
-            return "redirect:/admin/transportation/all";
+            return "redirect:/transportation/all";
         }
-        return "redirect:/admin/transportation/register";
+        return "redirect:/transportation/all";
     }
     
     @PostMapping(value="/update/{id}")
@@ -60,9 +60,9 @@ public class TransportationController {
         if (transportation!=null) {
             transportation.setTransportationId(id);
             service.saveTransportation(transportation);
-            return "redirect:/admin/transportation/all";
+            return "redirect:/transportation/all";
         }
-        return "redirect:/admin/transportation/update/"+id;
+        return "redirect:/transportation/update/"+id;
     }
     
 }

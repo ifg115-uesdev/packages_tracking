@@ -7,7 +7,6 @@ import java.util.logging.Level;
 
 import java.util.logging.Logger;
 
-import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -42,11 +41,6 @@ public class PackageServiceImpl implements PackageService {
     public void savePackage(Package paquete) {
         try {
             if (paquete != null) {
-                String idPackage = RandomStringUtils.randomAlphanumeric(50);
-                while (repository.existsById(idPackage)) {
-                    idPackage = RandomStringUtils.randomAlphanumeric(50);
-                }
-                paquete.setPackageId(idPackage);
                 repository.save(paquete);
             }
         } catch (Exception e) {
@@ -59,5 +53,18 @@ public class PackageServiceImpl implements PackageService {
     public List<Package> findByTransportationId(Integer transportationId) {
         return Optional.of(repository.findByTransportationId(transportationId)).orElse(Collections.emptyList());
     }
+
+    @Override
+    public boolean existe(String packageId) {
+        try {
+            if(repository.existsById(packageId))
+                return true;
+        } catch (Exception e) {
+            logger.log(Level.SEVERE, "Error al verificar si existe un paquete", e);
+        }
+        return false;
+    }
+
+    
 
 }
