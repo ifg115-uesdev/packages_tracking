@@ -118,6 +118,7 @@
         </ul>
       </div> -->
       <form th:action="@{/transportation/update-state-package}" th:objects="${t}" class="d-flex align-items-center" method="post">
+        <input type="text" name="idTrans">
         <div class="form-group">
           <label class="form-label" for="selectType">REPORTAR TRANSPORTE</label>
           <select class="form-select" id="selectType" aria-label="Default select example" name="stateP">
