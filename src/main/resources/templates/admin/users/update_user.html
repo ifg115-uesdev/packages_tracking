@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <title>Nuevo transporte</title>
+</head>
+<body>
+    <div layout:fragment="content">
+        <div class="row justify-content-center">
+          <form class="col-6 card p-4" style="background-color: #D9D9D9;" th:action="@{/users/update/{id}(id=${uUser.userId})}" th:object="${uUser}" method="post">
+            <h4>Datos del usuario</h4>
+            <hr>
+              <div class="form-group">
+                <label for="exampleFormControlInput1" class="form-label">Nombre:</label>
+                <input th:field="*{name}" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Nombre" required>
+              </div>
+              <br>
+              <div class="form-group">
+                <label for="exampleFormControlInput1" class="form-label">Apellido:</label>
+                <input th:field="*{lastname}" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Apellido" required>
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlInput1" class="form-label">Fecha de nacimiento:</label>
+                <input th:field="*{dateBirth}" type="date" class="form-control" id="exampleFormControlInput1" required>
+              </div>
+              <div class="form-group">
+                <label for="selectGenero" class="form-label">Género</label>
+                <select class="form-select" aria-label="Default select example" id="selectGenero" th:field="*{gender}">
+                  <!-- <option selected>Seleccione un genero</option> -->
+                  <option th:value="F">Femenino</option>
+                  <option th:value="M">Masculino</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlInput1" class="form-label">Email:</label>
+                <input th:field="*{email}" type="email" class="form-control" id="exampleFormControlInput1" placeholder="example@mail.com" required>
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlInput1" class="form-label">Username:</label>
+                <input th:field="*{username}" type="text" class="form-control" id="exampleFormControlInput1" placeholder="username" required>
+              </div>
+              <!-- <div class="form-group">
+                <label for="exampleFormControlInput1" class="form-label">Password:</label>
+                <input th:field="*{password}" type="password" class="form-control" id="exampleFormControlInput1" placeholder="Password" required>
+              </div> -->
+              <div class="form-group">
+                <label for="selectDepartamento" class="form-label">Departamento</label>
+                <select class="form-select" id="selectDepartamento" aria-label="Default select example" th:field="*{departmentId}">
+                    <option th:each="i : ${departamentos}" th:value="${i.departmentId}" th:text="${i.name}">
+                    </option>
+                  </select>
+              </div>
+              <div class="form-group">
+                <label for="selectAgencias" class="form-label">Agencia</label>
+                <select class="form-select" id="selectAgencias" aria-label="Default select example" th:field="*{agencyId}">
+                    <option th:each="i : ${agencias}" th:value="${i.agencyId}" th:text="${i.name}">
+                    </option>
+                  </select>
+              </div>
+              <div class="form-group">
+                <label for="selectRoles" class="form-label">Rol</label>
+                <select class="form-select" id="selectRoles" aria-label="Default select example"  th:field="*{roles}">
+                    <option th:each="i : ${roles}" th:value="${i.rolId}" th:text="${i.name}">
+                    </option>
+                  </select>
+              </div>
+              <div class="form-group d-flex justify-content-end" style="margin-top: 1.5rem;">
+                <button type="submit" class="btn text-white" style="background-color: #34495E; margin-right: 1rem;">Guardar</button>
+                <a th:href="@{/users}" class="btn text-white" style="background-color: #A93226;">Cancelar</a>
+              </div>
+          </form>
+        </div>
+    </div>
+</body>
+</html>

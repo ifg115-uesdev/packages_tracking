@@ -30,14 +30,14 @@
               </tr>
             </thead>
             <tbody>
-              <tr th:each="t : ${list}">
-                <td th:text="${t.name} +' '+ (${t.lastname} ?${t.lastname}:'')"></td>
-                <td th:text="${t.username}"></td>
-                <td th:text="${t.agencyId.name}"></td>
-                <td th:text="${t.roles.size > 0 ?t.roles[0].name:'USER'}"></td>
+              <tr th:each="u : ${list}">
+                <td th:text="${u.name} +' '+ (${u.lastname} ?${u.lastname}:'')"></td>
+                <td th:text="${u.username}"></td>
+                <td th:text="${u.agencyId.name}"></td>
+                <td th:text="${u.roles.size > 0 ?u.roles[0].name:'USER'}"></td>
                 <td>
                     <!-- <a th:href="@{/transportation/update/{id}(id=${t.transportationId})}" class="btn btn-warning">Editar</a> -->
-                    <a href="" class="btn btn-warning">Editar</a>
+                    <a th:href="@{/users/update/{id}(id=${u.userId})}" class="btn btn-warning">Editar</a>
                 </td>
               </tr>
             </tbody>
