@@ -1,5 +1,8 @@
 package ues.edu.sv.packages_tracking.serviceImpl;
 
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
 import java.util.logging.Level;
 
 import java.util.logging.Logger;
@@ -15,7 +18,7 @@ import ues.edu.sv.packages_tracking.service.PackageService;
 
 @Service
 @Transactional
-public class PackageServiceImpl implements PackageService{
+public class PackageServiceImpl implements PackageService {
 
     @Autowired
     PackageRepository repository;
@@ -27,10 +30,10 @@ public class PackageServiceImpl implements PackageService{
         Package paquete = new Package();
         try {
             paquete = repository.findById(id).orElse(null);
-            if(paquete!=null)
+            if (paquete != null)
                 return paquete;
         } catch (Exception e) {
-            logger.log(Level.SEVERE, "Error al obtener un paquete por ID",e);
+            logger.log(Level.SEVERE, "Error al obtener un paquete por ID", e);
         }
         return paquete;
     }
@@ -38,10 +41,10 @@ public class PackageServiceImpl implements PackageService{
     @Override
     public void savePackage(Package paquete) {
         try {
-            if(paquete!=null){
-                String idPackage= RandomStringUtils.randomAlphanumeric(50);
-                while(repository.existsById(idPackage)){
-                    idPackage= RandomStringUtils.randomAlphanumeric(50);
+            if (paquete != null) {
+                String idPackage = RandomStringUtils.randomAlphanumeric(50);
+                while (repository.existsById(idPackage)) {
+                    idPackage = RandomStringUtils.randomAlphanumeric(50);
                 }
                 paquete.setPackageId(idPackage);
                 repository.save(paquete);
@@ -49,7 +52,12 @@ public class PackageServiceImpl implements PackageService{
         } catch (Exception e) {
             logger.log(Level.SEVERE, "Error al guardar paquete", e);
         }
-        
+
     }
-    
+
+    @Override
+    public List<Package> findByTransportationId(Integer transportationId) {
+        return Optional.of(repository.findByTransportationId(transportationId)).orElse(Collections.emptyList());
+    }
+
 }
