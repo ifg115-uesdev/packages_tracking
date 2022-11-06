@@ -1,42 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <!-- CSS only -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <link href="../static/css/consultantTansportationStyles.css" rel="stylesheet" type="text/css">
-    
-    
-    <title>Consultar Transporte</title>
-    <style type="text/css">
-      .table-hover tbody tr:hover{
-        background-color: #e7f2fca8;
-        color: #34495E;
-      }
-      .h3{
-        color: #34495E;
-      }
-      .button{
-        background-color: #34495E;
-      }
-     
-    </style>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <!-- CSS only -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <link href="../static/css/consultantTansportationStyles.css" rel="stylesheet" type="text/css">
+
+
+  <title>Consultar Transporte</title>
+  <style type="text/css">
+    .table-hover tbody tr:hover {
+      background-color: #e7f2fca8;
+      color: #34495E;
+    }
+
+    .h3 {
+      color: #34495E;
+    }
+
+    .button {
+      background-color: #34495E;
+    }
+  </style>
 </head>
 <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #A93226; ">
   <div class="container-fluid">
     <a class="navbar-nav navbar-brand">Sistema de tacking</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse me-2" id="navbarNav">
       <ul class="navbar-nav  ms-auto">
-          <a class="nav-link  " aria-current="page" href="#">Inicio</a>
+        <a class="nav-link  " aria-current="page" href="#">Inicio</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" aria-current="page" href="#">Perfil</a>
@@ -51,87 +58,83 @@
     </div>
   </div>
 </nav>
+
 <body>
   <div class="container pt-5">
     <div class="row">
+      <div class="col-3 p-3">
+        <h3 class="sr-only d1">Consultar Transporte</h3>
+      </div>
+      <form th:action="@{/transportation/packages-transportation}" class="d-flex align-items-center" method="get">
         <div class="col-3 p-3">
-          <h3 class="sr-only d1">Consultar Transporte</h3>
-        </div>
-        <div class="col-3 p-3">
-          
-          <input type="text" class="form-control p1"placeholder ="Ingrese ID del transporte">
+
+          <input type="text" name="transportationId" class="form-control p1" placeholder="Ingrese ID del transporte">
         </div>
         <div class=" col-lg-auto">
-          <button type="submit"style="background-color:#34495E" class="btn btn-primary"> Buscar    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+          <button type="submit" style="background-color:#34495E" class="btn btn-primary"> Buscar <svg
+            xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-search"
+            viewBox="0 0 16 16">
+            <path
+            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
           </svg></button>
         </div>
+      </form>
     </div>
   </div>
   <div class="container d1">
     <div class="col-lg-auto offset-md-auto">
-        <h4 class="text-left d1 mt-5 " >Paquetes a bordo</h4>
-        <div class="table-responsive-lg ">
-          <table class="table table-hover d1">
-            <thead class="thead-light">
-              <tr>
-                <th class="text-center " scope="col">id Paquete</th>
-                <th class="text-center " scope="col">Agencia origen</th>
-                <th class="text-center " scope="col">Agencia destino</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="text-center">
-                <td>GA98GAHGAGUQR</td>
-                <td>Agencia A</td>
-                <td>Agencia B</td>
-              </tr>
-              <tr class="text-center">
-                <td>GFA874GFAUIGHA</td>
-                <td>Agencia A</td>
-                <td>Agencia B</td>
-              </tr>
-              <tr class="text-center">
-                <td>DGH49H02AEH09</td>
-                <td>Agencia A</td>
-                <td>Agencia B</td>
-              </tr>
-              <tr class="text-center">
-                <td>JAGF3784TGW9E</td>
-                <td>Agencia A</td>
-                <td>Agencia B</td>
-              </tr>
-              <tr class="text-center">
-                <td>ABQF984GFH48G</td>
-                <td>Agencia A</td>
-                <td>Agencia B</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+      <h4 class="text-left d1 mt-5 ">Paquetes a bordo</h4>
+      <div class="table-responsive-lg ">
+        <table class="table table-hover d1">
+          <thead class="thead-light">
+            <tr>
+              <th class="text-center " scope="col">id Paquete</th>
+              <th class="text-center " scope="col">Agencia origen</th>
+              <th class="text-center " scope="col">Agencia destino</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:each="t : ${paquetes}" class="text-center">
+              <td th:text="${t.packageId}"></td>
+              <td th:text="${t.shippingAgencyId.name}"></td>
+              <td th:text="${t.destinationAgencyId.name}"></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
+    </div>
   </div>
   <div class="container pt-5">
     <div class="row">
-  <div class="dropdown col-3 p-3">
-    <button class="btn btn-secondary dropdown-toggle text-dark" style="background-color:whitesmoke" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-      REPORTAR TRANSPORTE
-    </button>
-    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-      <li><a class="dropdown-item" href="#">Robo</a></li>
-      <li><a class="dropdown-item" href="#">Retraso</a></li>
-      <li><a class="dropdown-item" href="#">Daños</a></li>
-    </ul>
+      <!-- <div class="dropdown col-3 p-3">
+        <button class="btn btn-secondary dropdown-toggle text-dark" style="background-color:whitesmoke" type="button"
+          id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+          REPORTAR TRANSPORTE
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <li th:each="i : ${estados}" th:value="${i.statePackageId}" th:text="${i.name}">
+            <a class="dropdown-item" href="#">Robo</a>
+          </li>
+        </ul>
+      </div> -->
+      <form th:action="@{/transportation/update-state-package}" th:objects="${t}" class="d-flex align-items-center" method="post">
+        <div class="form-group">
+          <label class="form-label" for="selectType">REPORTAR TRANSPORTE</label>
+          <select class="form-select" id="selectType" aria-label="Default select example" name="stateP">
+            <option th:each="i : ${estados}" th:value="${i.statePackageId}" th:text="${i.name}">
+            </option>
+          </select>
+        </div>
+        <div class=" col-3 p-3">
+          <button type="submit" class="btn btn-danger" style="background-color: #A93226">PROCESAR</button>
+          <a class="btn  btn-primary text-white" th:href="@{/}" style="background-color: #34495E;">REGRESAR</a>
+        </div>
+      </form>
+    </div>
   </div>
-    <div class=" col-3 p-3">
-      <button type="submit" class="btn btn-danger"style="background-color: #A93226" >PROCESAR</button>
-      <button type="submit" class="btn btn-primary " style="background-color: #34495E;">REGRESAR</button>
-    </div>
-    </div>
-    </div>
   </div>
-</div>
-</div>
+  </div>
+  </div>
 </body>
-</html>
 
+</html>
