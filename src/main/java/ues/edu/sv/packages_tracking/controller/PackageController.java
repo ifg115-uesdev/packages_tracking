@@ -23,6 +23,7 @@ import ues.edu.sv.packages_tracking.service.UsuarioService;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 
@@ -67,9 +68,9 @@ public class PackageController {
             TrackingHist history = new TrackingHist();
 
             /**Generando id para el paquete y guardando los datos del paquete */
-            String idPackage = RandomStringUtils.randomAlphanumeric(45);
+            String idPackage = RandomStringUtils.randomAlphanumeric(25);
             while (packageService.existe(idPackage)) {
-                idPackage = RandomStringUtils.randomAlphanumeric(45);
+                idPackage = RandomStringUtils.randomAlphanumeric(25);
             }
             paquete.setPackageId(idPackage);
             paquete.setUserId(userId);
@@ -83,10 +84,18 @@ public class PackageController {
             history.setAgencyId(userId.getAgencyId());
             history.setTransportationId(tService.getOneById(1).get());
             history.setStatePackageId(stateService.getOneById(1).get());
+            hService.save(history);
 
-            return "redirect:/";
+            return "redirect:/package/info/"+idPackage;
         }
-        return "redirect:/package/create";
+        return "redirect:/package/create?error";
+    }
+
+    @GetMapping("/info/{packageId}")
+    public String infoPackage(@PathVariable("packageId")String packageId,Model model) {
+        
+        model.addAttribute("paquete", packageService.findById(packageId));  
+        return "cliente/info_envio";
     }
     
     

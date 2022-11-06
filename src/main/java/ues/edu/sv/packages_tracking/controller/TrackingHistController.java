@@ -33,6 +33,7 @@ public class TrackingHistController {
         Map<String, Object> map = new HashMap<>();
         map.put("paquete", packageService.findById(packageId));
         map.put("history",histService.findAllByPackaeId(packageId));
+        model.addAllAttributes(map);
         System.out.println(packageId);
         return "cliente/historial_envio";
     }

@@ -10,7 +10,59 @@
         <div class="row">
             <div class="col-10">
                 <h4>Historial de envio</h4>
-                
+                <hr>
+                <div class="col-12 card p-4" id="printInfo" style="background-color: #D9D9D9;">
+                    <h3 class="card-title">Informacion del envío</h3>
+                    <hr>
+                    <div class="row d-flex justify-content-between">
+                        <div class="col-6">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text text-white" style="background-color: #34495E;" id="basic-addon3">ID del paquete</span>
+                                <input disabled th:value="${paquete.packageId}" type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text text-white" style="background-color: #34495E;" id="basic-addon3">Origen</span>
+                                <input disabled th:value="${paquete.shippingAgencyId.name}" type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text text-white" style="background-color: #34495E;" id="basic-addon3">Destino</span>
+                                <input disabled th:value="${paquete.destinationAgencyId.name}" type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                            </div>  
+                        </div>
+                        <div class="col-5">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text text-white" style="background-color: #34495E;" id="basic-addon3">Fecha de entrega</span>
+                                <input disabled th:value="${paquete.endDate}!=null ?${paquete.endDate} :'Pendiente'" type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text text-white" style="background-color: #34495E;" id="basic-addon3">Estado del paquete</span>
+                                <input disabled th:value="${paquete.trackingHistList[0].statePackageId.name}" type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text text-white" style="background-color: #34495E;" id="basic-addon3">Peso del paquete</span>
+                                <input disabled th:value="${paquete.packageWeight} +' kg'" type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <br>
+            <h3 class="card-title">Historial del paquete</h3>
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Ubicacion</th>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Estado</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr th:each="h : ${history}">
+                    <td th:text="${h.agencyId.name}"></td>
+                    <td th:text="${h.modifyDate}"></td>
+                    <td th:text="${h.statePackageId.name}"></td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
         </div>
     </div>

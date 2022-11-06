@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <title>Información para el usuario</title>
+</head>
+<body>
+    <script language="Javascript">
+        function imprSelec(nombre) {
+          var ficha = document.getElementById(nombre);
+          var ventimp = window.open(' ', 'popimpr');
+          ventimp.document.write( ficha.innerHTML );
+          ventimp.document.close();
+          ventimp.print( );
+          ventimp.close();
+        }
+        </script>
+    <div layout:fragment="content">
+        <div class="row justify-content-center">
+            <div class="row justify-content-between">
+                <div class="col-6">
+                  <a th:href="@{/}" class="btn text-white" style="background-color: #A93226;">Regresar</a>
+                </div>
+                <div class="col-5 ">
+                  <button onclick="imprSelec('printInfo')" class="btn text-white" style="background-color: #34495E;">Imprimir detalle</button>
+                </div>
+            </div>
+            <br>
+            <br>
+            <br>
+            <div class="row">
+                <div class="col-10">
+                    <div class="col-12 card p-4" id="printInfo" style="background-color: #D9D9D9;">
+                        <h3 class="card-title">Informacion del envío</h3>
+                        <hr>
+                        <div class="row d-flex justify-content-between">
+                            <div class="col-6">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text text-white" style="background-color: #34495E;" id="basic-addon3">ID del paquete</span>
+                                    <input disabled th:value="${paquete.packageId}" type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                                </div>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text text-white" style="background-color: #34495E;" id="basic-addon3">Origen</span>
+                                    <input disabled th:value="${paquete.shippingAgencyId.name}" type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                                </div>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text text-white" style="background-color: #34495E;" id="basic-addon3">Destino</span>
+                                    <input disabled th:value="${paquete.destinationAgencyId.name}" type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                                </div>  
+                            </div>
+                            <div class="col-5">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text text-white" style="background-color: #34495E;" id="basic-addon3">Fecha de entrega</span>
+                                    <input disabled th:value="${paquete.endDate}!=null ?${paquete.endDate} :'Pendiente'" type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                                </div>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text text-white" style="background-color: #34495E;" id="basic-addon3">Estado del paquete</span>
+                                    <input disabled th:value="${paquete.trackingHistList[0].statePackageId.name}" type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                                </div>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text text-white" style="background-color: #34495E;" id="basic-addon3">Peso del paquete</span>
+                                    <input disabled th:value="${paquete.packageWeight} +' kg'" type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
