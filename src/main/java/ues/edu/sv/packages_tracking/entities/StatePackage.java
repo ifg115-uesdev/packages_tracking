@@ -43,4 +43,8 @@ public class StatePackage implements Serializable {
     private String description;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "statePackageId", fetch = FetchType.LAZY)
     private List<TrackingHist> trackingHistList;
+
+    public StatePackage(Integer statePackageId){
+        this.statePackageId = statePackageId;
+    }
 }

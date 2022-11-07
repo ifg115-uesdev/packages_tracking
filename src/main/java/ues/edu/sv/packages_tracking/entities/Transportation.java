@@ -25,8 +25,8 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 @Table(name = "transportation", catalog = "packs_tracking_db", schema = "")
-public class Transportation implements Serializable{
-    
+public class Transportation implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,4 +40,8 @@ public class Transportation implements Serializable{
     private boolean state;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "transportationId", fetch = FetchType.LAZY)
     private List<TrackingHist> trackingHistList;
+
+    public Transportation(Integer transportationId) {
+        this.transportationId = transportationId;
+    }
 }

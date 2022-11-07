@@ -117,16 +117,15 @@
           </li>
         </ul>
       </div> -->
-      <form th:action="@{/transportation/update-state-package}" th:objects="${t}" class="d-flex align-items-center" method="post">
-        <input type="text" name="idTrans">
-        <div class="form-group">
+      <form th:action="@{/transportation/update-state-package}" th:objects="${t}" class="d-flex align-items-end" method="post">
+        <div class="form-group col-3">
           <label class="form-label" for="selectType">REPORTAR TRANSPORTE</label>
           <select class="form-select" id="selectType" aria-label="Default select example" name="stateP">
             <option th:each="i : ${estados}" th:value="${i.statePackageId}" th:text="${i.name}">
             </option>
           </select>
         </div>
-        <div class=" col-3 p-3">
+        <div class=" col-3 ps-5">
           <button type="submit" class="btn btn-danger" style="background-color: #A93226">PROCESAR</button>
           <a class="btn  btn-primary text-white" th:href="@{/}" style="background-color: #34495E;">REGRESAR</a>
         </div>

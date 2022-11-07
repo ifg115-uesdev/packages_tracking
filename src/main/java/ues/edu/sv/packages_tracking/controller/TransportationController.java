@@ -1,6 +1,7 @@
 package ues.edu.sv.packages_tracking.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,10 +15,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import ues.edu.sv.packages_tracking.entities.StatePackage;
+import ues.edu.sv.packages_tracking.entities.TrackingHist;
 import ues.edu.sv.packages_tracking.entities.Package;
 import ues.edu.sv.packages_tracking.entities.Transportation;
 import ues.edu.sv.packages_tracking.service.PackageService;
 import ues.edu.sv.packages_tracking.service.StatePackageService;
+import ues.edu.sv.packages_tracking.service.TrackingHistService;
 import ues.edu.sv.packages_tracking.service.TransportationService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -30,7 +33,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 @RequestMapping(value="/transportation")
 public class TransportationController {
 
-    Integer idT = 0;
+    private List<Package> packages = new ArrayList<>();
+    private Integer transportationId = 0;
     
     @Autowired
     TransportationService service;
@@ -40,6 +44,9 @@ public class TransportationController {
 
     @Autowired
     StatePackageService statePackageService;
+
+    @Autowired
+    TrackingHistService trackingHistService;
 
     @GetMapping(value="/all")
     public String transportationList(Model model) {
@@ -97,15 +104,43 @@ public class TransportationController {
         map.put("paquetes", list);
         map.put("estados", stateList);
         model.addAllAttributes(map);
-        this.idT = id;
+        this.setPackages(list);
+        this.setTransportationId(id);
         return "consultar_transporte";
     }
 
     @PostMapping(value="/update-state-package")
-    public String updateTransportation(@ModelAttribute("paquetes")ArrayList<Package> paquetes, @RequestParam("stateP") Integer stateP) {
+    public String updateTransportation(@RequestParam("stateP") Integer stateP) {
         
-        System.out.println(stateP);
-        System.out.println(this.idT);
+        this.getPackages().stream().forEach(p -> {
+            TrackingHist tra = new TrackingHist();
+
+            tra.setPackageId(p);
+            tra.setModifyDate(new Date());
+            tra.setAgencyId(p.getShippingAgencyId());
+            tra.setStatePackageId(new StatePackage(stateP));
+            tra.setTransportationId(new Transportation(getTransportationId()));
+            tra.setObservation("Inconvenientes con el transporte en el cual se encontraba el paquete");
+            this.trackingHistService.save(tra);
+        });
         return "redirect:/transportation/packages-transportation?transportationId=1";
     }
+
+    public List<Package> getPackages() {
+        return packages;
+    }
+
+    public void setPackages(List<Package> packages) {
+        this.packages = packages;
+    }
+
+    public Integer getTransportationId() {
+        return transportationId;
+    }
+
+    public void setTransportationId(Integer transportationId) {
+        this.transportationId = transportationId;
+    }
+
+    
 }
