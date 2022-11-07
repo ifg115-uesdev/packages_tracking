@@ -38,16 +38,6 @@
             </tbody>
           </table>
           <br>
-          <div sec:authorize="isAuthenticated()">
-            This content is only shown to authenticated users.
-          </div>
-          <div sec:authorize="hasAuthority('ADMIN')">
-            This content is only shown to administrators.
-          </div>
-          <div sec:authorize="hasAuthority('ASSISTANT')">
-            This content is only shown to ASSISTANT.
-          </div>
-          <span sec:authentication="principal.authorities"></span>
     </div>
 </body>
 </html>

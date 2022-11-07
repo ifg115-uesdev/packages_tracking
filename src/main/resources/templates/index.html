@@ -7,25 +7,77 @@
 </head>
 
 <body>
+    <script th:inline="javascript">
+        function sayHello(){
+            console.log("Hola mundo");
+        }
+    </script>
     <div layout:fragment="content">
         <h3 sec:authorize="hasAuthority('ASSISTANT')" >Panel de administración para bodegueros</h3>
         <h3 sec:authorize="hasAuthority('SERVICE')">Panel de administración para agentes</h3>
         <h3 sec:authorize="hasAuthority('ADMIN')" >Panel de administración</h3>
         <h3 sec:authorize="hasAuthority('TECHNICIAN')" >Panel de administración para clasificadores</h3>
         <hr>
-        <div class="list-group">
-            <a sec:authorize="hasAuthority('ADMIN')" th:href="@{/transportation/all}" class="list-group-item list-group-item-action">Transportes</a>
-            <a sec:authorize="hasAuthority('ADMIN')" th:href="@{/users}" class="list-group-item list-group-item-action">Usuarios</a>
-            <a sec:authorize="hasAuthority('ADMIN')" th:href="@{/agencia/list}" class="list-group-item list-group-item-action">Agencias</a>
-            <a sec:authorize="hasAuthority('SERVICE')" th:href="@{/package/create}" class="list-group-item list-group-item-action">Crear nuevo envío de paquetes</a>
-            <a sec:authorize="hasAuthority('SERVICE')" th:href="@{/}" class="list-group-item list-group-item-action">Costear envío</a>
-            <a sec:authorize="hasAuthority('SERVICE')" th:href="@{/transportation/packages}" class="list-group-item list-group-item-action">Consultar transporte</a>
-            <a sec:authorize="hasAuthority('ASSISTANT')" th:href="@{/tracking/change-state}" class="list-group-item list-group-item-action">Cambiar estado de paquete</a>
-            <a sec:authorize="hasAuthority('TECHNICIAN')" th:href="@{/tracking/change-state}" class="list-group-item list-group-item-action">Cambiar estado de paquete</a>
-            <a sec:authorize="hasAuthority('ASSISTANT')" th:href="@{/package}" class="list-group-item list-group-item-action">Tabla de paquetes</a>
-            <a sec:authorize="hasAuthority('TECHNICIAN')" th:href="@{/package}" class="list-group-item list-group-item-action">Tabla de paquetes</a>
-          </div>
+        <br>
+        <br>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div  sec:authorize="hasAuthority('ADMIN')" class="card justify-content-center m-2 p-2" style="width: 12rem;">
+                        <span style="margin: auto;">Transportes</span>
+                        <a th:href="@{/transportation/all}" class="btn"><i class="bi bi-truck" style="font-size: 75px; margin: auto;"></i></a>
+                </div>
+                <div  sec:authorize="hasAuthority('ADMIN')" class="card justify-content-center m-2 p-2" style="width: 12rem;">
+                        <span style="margin: auto;">Usuarios</span>
+                        <a th:href="@{/users}" class="btn"><i class="bi bi-people-fill" style="font-size: 75px; margin: auto;"></i></a>
+                </div>
+                <div sec:authorize="hasAuthority('ADMIN')" class="card justify-content-center m-2 p-2" style="width: 12rem;">
+                        <span style="margin: auto;">Agencias</span>
+                        <a th:href="@{/agencia/list}" class="btn"><i class="bi bi-building" style="font-size: 75px; margin: auto;"></i></a>
+                        
+                </div>
+                <div sec:authorize="hasAuthority('SERVICE')" class="btn card justify-content-center m-2 p-2" style="width: 12rem;">
+                        <span style="margin: auto;">Registrar paquete</span>
+                        <a th:href="@{/package/create}" class="btn"><i class="bi bi-box-seam" style="font-size: 75px; margin: auto;"></i></a>
+                </div>
+                <div sec:authorize="hasAuthority('SERVICE')" class="card justify-content-center m-2 p-2" style="width: 12rem;">
+                        <span style="margin: auto;">Consultar transporte</span>
+                        <a th:href="@{/transportation/packages}" class="btn"><i class="bi bi-truck" style="font-size: 75px; margin: auto;"></i></a>
+                </div>
+                <div sec:authorize="hasAuthority('SERVICE')" class="card justify-content-center m-2 p-2" style="width: 12rem;">
+                        <span style="margin: auto;">Cambiar estado de paquetes</span>
+                        <a th:href="@{/tracking/change-state}" class="btn"><i class="bi bi-shuffle" style="font-size: 75px; margin: auto;"></i></a>
+                </div>
+                <div sec:authorize="hasAuthority('TECHNICIAN')" class="card justify-content-center m-2 p-2" style="width: 12rem;">
+                        <span style="margin: auto;">Cambiar estado de paquetes</span>
+                        <a th:href="@{/tracking/change-state}" class="btn"><i class="bi bi-shuffle" style="font-size: 75px; margin: auto;"></i></a>
+                        
+                </div>
+                <div sec:authorize="hasAuthority('TECHNICIAN')" class="card justify-content-center m-2 p-2" style="width: 12rem;">
+                        <span style="margin: auto;">Tabla de paquetes</span>
+                        <a th:href="@{/package}" class="btn"><i class="bi bi-box-seam" style="font-size: 75px; margin: auto;"></i></a>
+                        
+                </div>
+                <div sec:authorize="hasAuthority('ASSISTANT')" class="card justify-content-center m-2 p-2" style="width: 12rem;">
+                        <span style="margin: auto;">Cambiar estado de paquetes</span>
+                        <a th:href="@{/tracking/change-state}" class="btn"><i class="bi bi-shuffle" style="font-size: 75px; margin: auto;"></i></a>
+                </div>
+                <div sec:authorize="hasAuthority('ASSISTANT')" class="card justify-content-center m-2 p-2" style="width: 12rem;">
+                        <span style="margin: auto;">Tabla de paquetes</span>
+                        <a th:href="@{/package}" class="btn"><i class="bi bi-box-seam" style="font-size: 75px; margin: auto;"></i></a>
+                </div>
+            </div>
+        </div>
     </div>
+    <!-- sec:authorize="hasAuthority('ADMIN')"
+sec:authorize="hasAuthority('ADMIN')"
+sec:authorize="hasAuthority('ADMIN')"
+sec:authorize="hasAuthority('SERVICE')"
+sec:authorize="hasAuthority('SERVICE')"
+sec:authorize="hasAuthority('SERVICE')"
+sec:authorize="hasAuthority('ASSISTANT')"
+sec:authorize="hasAuthority('TECHNICIAN')"
+sec:authorize="hasAuthority('ASSISTANT')"
+sec:authorize="hasAuthority('TECHNICIAN')" -->
 </body>
 
 </html>
