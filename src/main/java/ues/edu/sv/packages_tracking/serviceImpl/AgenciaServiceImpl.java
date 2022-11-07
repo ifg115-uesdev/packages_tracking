@@ -61,5 +61,11 @@ public class AgenciaServiceImpl implements AgenciaService {
         
         return agencia;
     }
+
+    @Override
+    public Agency obtenerPorNombre(String name) {
+        Agency agencia= repository.findByAgencyName(name).orElse(null);
+        return agencia;
+    }
     
 }

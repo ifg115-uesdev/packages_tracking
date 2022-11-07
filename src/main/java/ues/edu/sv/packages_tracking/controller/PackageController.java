@@ -50,6 +50,13 @@ public class PackageController {
     @Autowired
     TransportationService tService;
 
+    @GetMapping(value="")
+    public String allPackages(Model model) {
+        model.addAttribute("paquetes", packageService.findAll());
+
+        return "listado_paquetes";
+    }
+    
     @GetMapping(value="/create")
     public String createPackageView(Model model) {
         Map<String,Object> map = new HashMap<>();

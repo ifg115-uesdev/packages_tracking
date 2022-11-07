@@ -6,6 +6,8 @@ import ues.edu.sv.packages_tracking.entities.Package;
 
 public interface PackageService {
     
+    public List<Package> findAll();
+
     public Package findById(String id);
 
     public List<Package> findByTransportationId(Integer transportationId);

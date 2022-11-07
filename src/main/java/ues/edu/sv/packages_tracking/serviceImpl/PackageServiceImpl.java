@@ -1,5 +1,6 @@
 package ues.edu.sv.packages_tracking.serviceImpl;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -23,6 +24,19 @@ public class PackageServiceImpl implements PackageService {
     PackageRepository repository;
 
     Logger logger = Logger.getLogger(getClass().getName());
+
+    @Override
+    public List<Package> findAll(){
+        List<Package> lista = new ArrayList<>();
+        try {
+            lista = repository.findAll();
+            if(!lista.isEmpty())
+                return lista;
+        } catch (Exception e) {
+            logger.log(Level.SEVERE, "Error al obtener lista de paquetes", e);
+        }
+        return lista;
+    }
 
     @Override
     public Package findById(String id) {

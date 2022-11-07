@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layout}">
+
+<head>
+    <title>Actualizar envío</title>
+</head>
+
+<body>
+  <div layout:fragment="content">
+    <div class="row">
+      <div class="row">
+        <div class="col-6">
+          <a th:href="@{/}" class="btn text-white" style="background-color: #34495E;">Regresar</a>
+        </div>
+      </div>
+      <br>
+      <br>
+      <div class="col-10">
+          <div class="col-12 card p-4" id="printInfo" style="background-color: #D9D9D9;">
+              <h3 class="card-title">Actualizacion del envío</h3>
+              <hr>
+              <div class="row d-flex justify-content-between">
+                <div class="col-6">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text text-white" style="background-color: #34495E;" id="basic-addon3">ID del package</span>
+                        <input disabled th:value="${package.packageId}" type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text text-white" style="background-color: #34495E;" id="basic-addon3">Origen</span>
+                        <input disabled th:value="${package.shippingAgencyId.name}" type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text text-white" style="background-color: #34495E;" id="basic-addon3">Destino</span>
+                        <input disabled th:value="${package.destinationAgencyId.name}" type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                    </div>  
+                </div>
+                <div class="col-5">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text text-white" style="background-color: #34495E;" id="basic-addon3">Fecha de entrega</span>
+                        <input disabled th:value="${package.endDate}!=null ?${package.endDate} :'Pendiente'" type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text text-white" style="background-color: #34495E;" id="basic-addon3">Estado del package</span>
+                        <input disabled th:value="${package.trackingHistList[0].statePackageId.name}" type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text text-white" style="background-color: #34495E;" id="basic-addon3">Peso del package</span>
+                        <input disabled th:value="${package.packageWeight} +' kg'" type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                    </div>
+                </div>
+            </div>
+              <br>
+              <div class="row d-inline-flex justify-content-center m-4">
+                <div class="col-8">
+                  <form class="row d-inline-flex">
+                    <div class="col-10">
+                      <input type="text" class="form-control" name="packageId" placeholder="Ingrese el Id del package" aria-label="Ingrese el Id de su package" aria-describedby="button-addon2">
+                    </div>
+                    <div class="col-2">
+                      <button class="btn text-white" type="submit" style="background-color: #34495E;">Rastrear</button>
+                    </div>
+                  </form>
+                </div>
+                  <div class="col-4">
+                    <form th:action="@{/tracking/changestate}" th:object="${package}" method="post">
+                      <input type="text" name="idPackage" th:value="${param.packageId}" style="display: none;">
+                      <button class="btn text-white" type="submit" style="background-color: #A93226;">Procesar</button>
+                    </form>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  </div>
+</body>
+</html>

@@ -25,5 +25,7 @@ public interface AgenciaService {
      */
     public Agency obtenerPorId(Integer idAgencia);
 
+    public Agency obtenerPorNombre(String name);
+
 
 }

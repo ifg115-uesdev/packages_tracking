@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <title>Tabla de paquetes</title>
+</head>
+<body>
+    <div layout:fragment="content">
+        <h3>Listado de paquetes</h3>
+        <hr>
+        <div class="row">
+          <div class="col-6">
+            <a th:href="@{/}" class="btn text-white" style="background-color: #34495E;">Regresar</a>
+          </div>
+        </div>
+        <br>
+        <br>
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Paquete ID</th>
+                <th scope="col">Ubicacion de salida</th>
+                <th scope="col">Ubicacion de destino</th>
+                <th scope="col">Estado del envío</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr th:each="p : ${paquetes}">
+                <td th:text="${p.packageId}"></td>
+                <td th:text="${p.shippingAgencyId.name}"></td>
+                <td th:text="${p.destinationAgencyId.name}"></td>
+                <td th:text="${p.trackingHistList[p.trackingHistList.size-1].statePackageId.name}"></td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+</body>
+</html>

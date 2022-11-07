@@ -8,14 +8,22 @@
 
 <body>
     <div layout:fragment="content">
-        
+        <h3 sec:authorize="hasAuthority('ASSISTANT')" >Panel de administración para bodegueros</h3>
+        <h3 sec:authorize="hasAuthority('SERVICE')">Panel de administración para agentes</h3>
+        <h3 sec:authorize="hasAuthority('ADMIN')" >Panel de administración</h3>
+        <h3 sec:authorize="hasAuthority('TECHNICIAN')" >Panel de administración para clasificadores</h3>
+        <hr>
         <div class="list-group">
             <a sec:authorize="hasAuthority('ADMIN')" th:href="@{/transportation/all}" class="list-group-item list-group-item-action">Transportes</a>
             <a sec:authorize="hasAuthority('ADMIN')" th:href="@{/users}" class="list-group-item list-group-item-action">Usuarios</a>
             <a sec:authorize="hasAuthority('ADMIN')" th:href="@{/agencia/list}" class="list-group-item list-group-item-action">Agencias</a>
-            <a sec:authorize="hasAuthority('SERVICE')" th:href="@{/package/create}" class="list-group-item list-group-item-action">Envío de paquetes</a>
+            <a sec:authorize="hasAuthority('SERVICE')" th:href="@{/package/create}" class="list-group-item list-group-item-action">Crear nuevo envío de paquetes</a>
             <a sec:authorize="hasAuthority('SERVICE')" th:href="@{/}" class="list-group-item list-group-item-action">Costear envío</a>
-            <a sec:authorize="hasAuthority('ASSISTANT')" th:href="@{/}" class="list-group-item list-group-item-action">Cambiar estado de paquete</a>
+            <a sec:authorize="hasAuthority('SERVICE')" th:href="@{/transportation/packages}" class="list-group-item list-group-item-action">Consultar transporte</a>
+            <a sec:authorize="hasAuthority('ASSISTANT')" th:href="@{/tracking/change-state}" class="list-group-item list-group-item-action">Cambiar estado de paquete</a>
+            <a sec:authorize="hasAuthority('TECHNICIAN')" th:href="@{/tracking/change-state}" class="list-group-item list-group-item-action">Cambiar estado de paquete</a>
+            <a sec:authorize="hasAuthority('ASSISTANT')" th:href="@{/package}" class="list-group-item list-group-item-action">Tabla de paquetes</a>
+            <a sec:authorize="hasAuthority('TECHNICIAN')" th:href="@{/package}" class="list-group-item list-group-item-action">Tabla de paquetes</a>
           </div>
     </div>
 </body>

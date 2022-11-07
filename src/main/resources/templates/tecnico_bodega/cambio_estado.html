@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layout}">
+
+<head>
+    <title>Actualizar envío</title>
+</head>
+
+<body>
+  <div layout:fragment="content">
+    <div class="row">
+      <div class="row">
+        <div class="col-6">
+          <a th:href="@{/}" class="btn text-white" style="background-color: #34495E;">Regresar</a>
+        </div>
+      </div>
+      <br>
+      <br>
+      <div class="col-10">
+          <div class="col-12 card p-4" id="printInfo" style="background-color: #D9D9D9;">
+              <h3 class="card-title">Actualizacion del envío</h3>
+              <hr>
+              <div class="row d-flex justify-content-between">
+                  <div class="col-6">
+                      <div class="input-group mb-3">
+                          <span class="input-group-text text-white" style="background-color: #34495E;" id="basic-addon3">ID del paquete</span>
+                          <input disabled th:value="${paquete.packageId}!=null ?${paquete.packageId} :''" type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                      </div>
+                      <div class="input-group mb-3">
+                          <span class="input-group-text text-white" style="background-color: #34495E;" id="basic-addon3">Origen</span>
+                          <input disabled th:value="${paquete.shippingAgencyId}!=null ?${paquete.shippingAgencyId} :''" type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                      </div>
+                      <div class="input-group mb-3">
+                          <span class="input-group-text text-white" style="background-color: #34495E;" id="basic-addon3">Destino</span>
+                          <input disabled th:value="${paquete.destinationAgencyId}!=null ?${paquete.destinationAgencyId} :''" type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                      </div>  
+                  </div>
+                  <div class="col-5">
+                      <div class="input-group mb-3">
+                          <span class="input-group-text text-white" style="background-color: #34495E;" id="basic-addon3">Fecha de entrega</span>
+                          <input disabled th:value="${paquete.endDate}!=null ?${paquete.endDate} :''" type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                      </div>
+                      <div class="input-group mb-3">
+                          <span class="input-group-text text-white" style="background-color: #34495E;" id="basic-addon3">Estado del paquete</span>
+                          <input disabled th:value="${paquete.trackingHistList}!=null ?${paquete.trackingHistList}:''" type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                      </div>
+                      <div class="input-group mb-3">
+                          <span class="input-group-text text-white" style="background-color: #34495E;" id="basic-addon3">Peso del paquete</span>
+                          <input disabled th:value="${paquete.packageWeight}>0 ?${paquete.packageWeight} :''" type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                      </div>
+                  </div>
+              </div>
+              <br>
+              <div class="row d-inline-flex justify-content-center m-4">
+                <div class="col-8">
+                  <form class="row d-inline-flex" th:action="@{/tracking/changestate}">
+                    <div class="col-10">
+                      <input required type="text" class="form-control" name="packageId" placeholder="Ingrese el Id del paquete" aria-label="Ingrese el Id de su paquete" aria-describedby="button-addon2">
+                    </div>
+                    <div class="col-2">
+                      <button class="btn text-white" type="submit" style="background-color: #34495E;">Consultar</button>
+                    </div>
+                  </form>
+                </div>
+                  <div class="col-4 ">
+                    <button class="btn text-white" type="submit" style="background-color: #A93226;" disabled>Procesar</button>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  </div>
+</body>
+</html>
