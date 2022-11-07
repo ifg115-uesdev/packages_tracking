@@ -51,21 +51,30 @@
                 </div>
             </div>
               <br>
-              <div class="row d-inline-flex justify-content-center m-4">
-                <div class="col-8">
-                  <form class="row d-inline-flex">
+              <div class="row  justify-content-between m-4">
+                <div class="col-6">
+                  <form class="row d-inline-flex" th:action="@{/tracking/changestate}">
                     <div class="col-10">
                       <input type="text" class="form-control" name="packageId" placeholder="Ingrese el Id del package" aria-label="Ingrese el Id de su package" aria-describedby="button-addon2">
                     </div>
                     <div class="col-2">
-                      <button class="btn text-white" type="submit" style="background-color: #34495E;">Rastrear</button>
+                      <button class="btn text-white" type="submit" style="background-color: #34495E;">Consultar</button>
                     </div>
                   </form>
                 </div>
-                  <div class="col-4">
+                  <div class="col-6" style="justify-content: left;">
                     <form th:action="@{/tracking/changestate}" th:object="${package}" method="post">
                       <input type="text" name="idPackage" th:value="${param.packageId}" style="display: none;">
-                      <button class="btn text-white" type="submit" style="background-color: #A93226;">Procesar</button>
+                      <div class="col-8">
+                        <div class="form-group mb-2">
+                          <label for="selectTransporte" class="form-label">Transporte</label>
+                          <select class="form-select" id="selectTransporte" aria-label="Default select example" name="transportationId">
+                            <option th:each="i : ${transportes}" th:value="${i.transportationId}" th:text="${i.name}">
+                            </option>
+                            </select>
+                        </div>
+                        <button class="btn text-white" type="submit" style="background-color: #A93226;">Procesar</button>
+                      </div>
                     </form>
                   </div>
               </div>

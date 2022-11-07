@@ -69,20 +69,26 @@ public class TrackingHistController {
 
     @GetMapping("changestate")
     public String getChangeStatePackageView(Model model, @RequestParam("packageId")String packageId,Package paquete) {
+        List<Transportation> transportes = tService.getAllTransportation();
         paquete = packageService.findById(packageId);
         List<TrackingHist> history = paquete.getTrackingHistList().stream().sorted(Comparator.comparingInt(TrackingHist::getHistId).reversed()).collect(Collectors.toList());
         paquete.setTrackingHistList(history);
-        model.addAttribute("package",paquete);
+        Map<String,Object> map = new HashMap<>();
+        map.put("package", paquete);
+        map.put("transportes", transportes);
+        model.addAllAttributes(map);
         return "tecnico_bodega/procesar_cambio";
     }
 
     @PostMapping("/changestate")
-    public String changeStatePackage(@RequestParam("idPackage")String packageId) {
+    public String changeStatePackage(@RequestParam("idPackage")String packageId,@RequestParam("transportationId")Integer transportationId ) {
         Package paquete = packageService.findById(packageId);
         TrackingHist newHistory= new TrackingHist();
         TrackingHist trackingHist=null;
         List<TrackingHist> history = histService.findAllByPackaeId(packageId).stream().sorted(Comparator.comparingInt(TrackingHist::getHistId).reversed()).collect(Collectors.toList());
         StatePackage estado =null;
+        System.out.println(transportationId);
+        Transportation transporte = tService.getOneById(transportationId).get();
         trackingHist=history.get(0);
             switch (trackingHist.getStatePackageId().getStatePackageId()) {
                 case 1:
@@ -91,7 +97,7 @@ public class TrackingHistController {
                 newHistory.setAgencyId(aService.obtenerPorNombre("Agencia San Salvador"));
                 newHistory.setModifyDate(new Date());
                 newHistory.setStatePackageId(estado);
-                newHistory.setTransportationId(trackingHist.getTransportationId());
+                newHistory.setTransportationId(transporte);
                 histService.save(newHistory);
                     break;
                 case 2:
@@ -100,7 +106,7 @@ public class TrackingHistController {
                     newHistory.setAgencyId(aService.obtenerPorNombre("Agencia San Salvador"));
                     newHistory.setModifyDate(new Date());
                     newHistory.setStatePackageId(estado);
-                    newHistory.setTransportationId(trackingHist.getTransportationId());
+                    newHistory.setTransportationId(transporte);
                     histService.save(newHistory);
                     break;
                 case 3:
@@ -122,9 +128,9 @@ public class TrackingHistController {
                     histService.save(newHistory);
                     break;
                 
-                // default:
-                //     int estadoAnterior =  history.get(1).getStatePackageId().getStatePackageId();
-                //     break;
+                default:
+                    int estadoAnterior =  history.get(1).getStatePackageId().getStatePackageId();
+                    break;
         }
         
         return "redirect:/tracking/home";
